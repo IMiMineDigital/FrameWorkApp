@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
   
 
   spec.name         = "FrameWorkApp"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "FrameWorkApp is a framework."
 
  
@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
   spec.author             = { "IMiMineDigital" => "48542324+IMiMineDigital@users.noreply.github.com" }
  
 
-  spec.platform     = :ios, "10.0"
+  spec.platform     = :ios, "9.0"
 
   
   spec.source       = { :git => "https://github.com/IMiMineDigital/FrameWorkApp.git", :tag => "#{spec.version}" }
