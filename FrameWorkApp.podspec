@@ -11,7 +11,9 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "9.0"
   spec.source       = { :git => "https://github.com/IMiMineDigital/FrameWorkApp.git", :tag => "1.0.1" }
   spec.source_files  = "FrameWorkApp", "FrameWorkApp/**/*.{h,m}"
-  spec.exclude_files = "FrameWorkApp/Exclude"
+  spec.exclude_files = "FrameWorkApp/FrameWorkApp/*.plist"
+
+  #spec.exclude_files = "FrameWorkApp/Exclude"
   spec.requires_arc = true
 
   
