@@ -13,7 +13,6 @@ Pod::Spec.new do |spec|
   spec.source_files  = "FrameWorkApp", "FrameWorkApp/Classes/*.{h,m}"
 
 
-HOLLER-iOS/HOLLER-iOS/Classes/*.{h,m}
   spec.exclude_files = "FrameWorkApp/Exclude"
   spec.requires_arc = true
 
