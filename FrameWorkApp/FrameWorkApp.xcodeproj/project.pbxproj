@@ -6,21 +6,6 @@
 	objectVersion = 50;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		23E6545922A7CFE800C6377C /* Framework */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 23E6545A22A7CFE800C6377C /* Build configuration list for PBXAggregateTarget "Framework" */;
-			buildPhases = (
-				23E6545F22A7D03100C6377C /* ShellScript */,
-			);
-			dependencies = (
-				23E6545E22A7D02F00C6377C /* PBXTargetDependency */,
-			);
-			name = Framework;
-			productName = Framework;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		230EC8142296CC1A0018FB83 /* ApiHendlerClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 236EB7DE21E8AB31001C72A5 /* ApiHendlerClass.m */; };
 		231629712241FEA800BF654F /* ChangesStrFile.strings in Resources */ = {isa = PBXBuildFile; fileRef = 231629702241FEA800BF654F /* ChangesStrFile.strings */; };
@@ -198,16 +183,6 @@
 		23F15D7D21CB982900C23F28 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F15D7C21CB982900C23F28 /* AVFoundation.framework */; };
 		23F7F17A21ECC39700692774 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F7F17921ECC39700692774 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		23E6545D22A7D02F00C6377C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2324F06B21C7773F008BDA2A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2324F07321C7773F008BDA2A;
-			remoteInfo = FrameWorkApp;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		231629702241FEA800BF654F /* ChangesStrFile.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = ChangesStrFile.strings; sourceTree = "<group>"; };
@@ -943,6 +918,7 @@
 				2324F07021C7773F008BDA2A /* Sources */,
 				2324F07121C7773F008BDA2A /* Frameworks */,
 				2324F07221C7773F008BDA2A /* Resources */,
+				230DA9692338F0550066119D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -967,9 +943,6 @@
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
 					};
-					23E6545922A7CFE800C6377C = {
-						CreatedOnToolsVersion = 10.2.1;
-					};
 				};
 			};
 			buildConfigurationList = 2324F06E21C7773F008BDA2A /* Build configuration list for PBXProject "FrameWorkApp" */;
@@ -985,7 +958,6 @@
 			projectRoot = "";
 			targets = (
 				2324F07321C7773F008BDA2A /* FrameWorkApp */,
-				23E6545922A7CFE800C6377C /* Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -1052,7 +1024,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		23E6545F22A7D03100C6377C /* ShellScript */ = {
+		230DA9692338F0550066119D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1137,14 +1109,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		23E6545E22A7D02F00C6377C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2324F07321C7773F008BDA2A /* FrameWorkApp */;
-			targetProxy = 23E6545D22A7D02F00C6377C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2324F08621C7773F008BDA2A /* Debug */ = {
@@ -1364,25 +1328,6 @@
 			};
 			name = Release;
 		};
-		23E6545B22A7CFE800C6377C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		23E6545C22A7CFE800C6377C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1400,15 +1345,6 @@
 			buildConfigurations = (
 				2324F08921C7773F008BDA2A /* Debug */,
 				2324F08A21C7773F008BDA2A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		23E6545A22A7CFE800C6377C /* Build configuration list for PBXAggregateTarget "Framework" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				23E6545B22A7CFE800C6377C /* Debug */,
-				23E6545C22A7CFE800C6377C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
