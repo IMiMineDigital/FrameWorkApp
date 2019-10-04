@@ -1,6 +1,0 @@
-framework module FrameWorkApp {
-  umbrella header "FrameWorkApp.h"
-
-  export *
-  module * { export * }
-}
