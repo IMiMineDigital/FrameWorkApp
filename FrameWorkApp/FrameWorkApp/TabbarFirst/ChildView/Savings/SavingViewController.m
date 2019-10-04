@@ -159,4 +159,9 @@
     [self.navigationController popViewControllerAnimated:YES];
  }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
 @end

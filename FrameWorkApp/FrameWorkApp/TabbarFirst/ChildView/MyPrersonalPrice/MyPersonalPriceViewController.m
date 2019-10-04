@@ -810,12 +810,19 @@
     [Validation addShadowToView:self.filterCatclassheaderView];
     [Validation addShadowToView:self.sortbyclassheaderView];
     [self shoppinglistcount];
-    
-
-      [self Filterviewclasshide];
+    [self Filterviewclasshide];
      _filtercatclassview.hidden=YES;
       [self GetfilterByOffers];
 
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.sortbyTable.backgroundColor = [UIColor whiteColor];
+    //    self.collectionDoubletable.backgroundColor = [UIColor whiteColor];
+    //    self.collectionSingletable.backgroundColor = [UIColor whiteColor];
+    self.Filtertable.backgroundColor = [UIColor whiteColor];
+    self.Filtercattable.backgroundColor = [UIColor whiteColor];
 }
 -(void)GetfilterByOffers
 {
@@ -1550,12 +1557,7 @@ AdditionalOffers*cell1;
                         {
                              if ([strDict[@"CouponID"] integerValue]==[Cir_data[i][@"CouponID"] integerValue])
                              {
-                           
-                                 
-                                     NSLog(@"CouponID:%d",[strDict[@"CouponID"] integerValue]);
-                                     NSLog(@"Cir_data:%d",[Cir_data[i][@"CouponID"] integerValue]);
-                                 
-                                     NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[Cir_data objectAtIndex:i]];
+                                  NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[Cir_data objectAtIndex:i]];
                                      [Cir_Dicts setObject:@"1" forKey:@"ClickCount"];
                                      [Cir_Dicts setObject:@"1" forKey:@"ListCount"];
                                      [Cir_data replaceObjectAtIndex:i withObject:Cir_Dicts];
@@ -1731,7 +1733,7 @@ AdditionalOffers*cell1;
 -(void)SubRelatedCountToatalQty:(NSMutableDictionary*)ReData
 {
     
-    
+    NSInteger indexno;
          NSInteger count;
          NSInteger Quantitycount;
          NSString*UPCRelated=[NSString stringWithFormat:@"%@",ReData[@"UPC"]];
@@ -1774,26 +1776,17 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)count] forKey:@"TotalQuantity"];
                        [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
-                       
-                           
-                       NSIndexPath *indexPath = [NSIndexPath indexPathForRow:k inSection:0];
-                       [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
-                       [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+                           indexno=k;
+                     
                        }
                    }
                }
            }
 
         }
-        else if([ReData[@"PrimaryOfferTypeId"] integerValue]==1)
+        else if ([ReData[@"PrimaryOfferTypeId"] integerValue]==1)
         {
-            
-            
-                      
-                      
-                      
-                      
-                      for (int i=0; i<[Cir_data count]; i++)
+                     for (int i=0; i<[Cir_data count]; i++)
                       {
                           if ([ReData[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue])
                           {
@@ -1822,10 +1815,8 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                                     NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
                                     [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)Quantitycount] forKey:@"Quantity"];
                                     [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
-                                      
-                                      NSIndexPath *indexPath = [NSIndexPath indexPathForRow:k inSection:0];
-                                      [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
-                                      [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+                                      indexno=k;
+                              
                                   }
                               }
                           }
@@ -1843,21 +1834,126 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
       
      [self.delegate function:Cir_data];
      [_collectionSingletable reloadData];
+     [_collectionDoubletable reloadData];
+     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:indexno inSection:0];
+     [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+     [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+}
+-(void)shoppingToCircularSubRelatedCountToatalQty:(NSMutableDictionary*)ReData
+{
+    
+    NSInteger indexno;
+    NSInteger count;
+       NSInteger qtycount;
+    NSInteger Quantitycount;
+//    NSString*UPCRelated=[NSString stringWithFormat:@"%@",ReData[@"UPC"]];
+//    NSString*UPCRelatedOfferCode=[NSString stringWithFormat:@"%@",ReData[@"OfferCode"]];
+    // NSMutableDictionary*strDict = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:SelectedProductIndex]];
+    if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferTypeId"] integerValue]==2)
+    {
+        for (int i=0; i<[Cir_data count]; i++)
+        {
+            if ([ReData[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue] ||[ReData[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([ReData[@"CouponID"] integerValue]==[Cir_data[i][@"CouponID"] integerValue])
+                {
+                    count=[Cir_data[i][@"TotalQuantity"] integerValue];
+                    qtycount=[Cir_data[i][@"Quantity"] integerValue];
+                    if (count>0)
+                    {
+                        count--;
+                        qtycount--;
+                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[Cir_data objectAtIndex:i]];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)count] forKey:@"TotalQuantity"];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)qtycount] forKey:@"Quantity"];
+                        [Cir_data replaceObjectAtIndex:i withObject:Cir_Dicts];
+                        
+                    }
+                }
+            }
+        }
+        
+        
+        for (int k=0;  k<[productList count];  k++)
+        {
+            if ([ReData[@"PrimaryOfferTypeId"] integerValue]==[productList[k][@"PrimaryOfferTypeId"] integerValue] ||[ReData[@"PrimaryOfferTypeId"] integerValue]==[productList[k][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([ReData[@"CouponID"] integerValue]==[productList[k][@"CouponID"] integerValue])
+                {
+                          count=[productList[k][@"TotalQuantity"] integerValue];
+                          qtycount=[productList[k][@"Quantity"] integerValue];
+                    if (count>0)
+                    {
+                        count--;
+                        qtycount--;
+                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)count] forKey:@"TotalQuantity"];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)qtycount] forKey:@"Quantity"];
+                        [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
+                        indexno=k;
+                   
+     
+                    }
+                }
+            }
+        }
+        
+    }
+    else if([ReData[@"PrimaryOfferTypeId"] integerValue]==1)
+    {
+        for (int i=0; i<[Cir_data count]; i++)
+        {
+            if ([ReData[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([ReData[@"OfferCode"] integerValue]==[Cir_data[i][@"UPC"] integerValue] || [ReData[@"UPC"] integerValue]==[Cir_data[i][@"UPC"] integerValue])
+                {
+                    NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[Cir_data objectAtIndex:i]];
+                    [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)Quantitycount] forKey:@"Quantity"];
+                    [Cir_data replaceObjectAtIndex:i withObject:Cir_Dicts];
+                }
+            }
+        }
+        
+        
+        for (int k=0; k<[productList count]; k++)
+        {
+            if ([ReData[@"PrimaryOfferTypeId"] integerValue]==[productList[k][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([ReData[@"OfferCode"] integerValue]==[productList[k][@"UPC"] integerValue] || [ReData[@"UPC"] integerValue]==[productList[k][@"UPC"] integerValue])
+                {
+                    Quantitycount=[productList[k][@"Quantity"] integerValue];
+                    if (Quantitycount>0)
+                    {
+                        Quantitycount--;
+                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)Quantitycount] forKey:@"Quantity"];
+                        [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
+                      indexno=k;
+             
+                    }
+                }
+            }
+        }
+   }
+    [self.delegate function:Cir_data];
+    [_collectionSingletable reloadData];
     [_collectionDoubletable reloadData];
- 
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:indexno inSection:0];
+    [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 -(void)AddRelatedCountToatalQty:(NSMutableDictionary*)ReData
 {
     
-    
+             NSInteger indexno;
              NSInteger count;
           //   NSInteger qtycount;
              NSInteger Quantitycount;
-            // NSString*UPCRelated=[NSString stringWithFormat:@"%@",ReData[@"UPC"]];
-            // NSString*UPCRelatedOfferCode=[NSString stringWithFormat:@"%@",ReData[@"OfferCode"]];
- 
-    
-        if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferTypeId"] integerValue]==2)
+           if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferTypeId"] integerValue]==2)
           {
          
                 for (int i=0; i<[Cir_data count]; i++)
@@ -1894,6 +1990,8 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                                 NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
                                [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)count] forKey:@"TotalQuantity"];
                                [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
+                                  
+                                  indexno=k;
                               }
                           }
                       }
@@ -1936,6 +2034,7 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                                     NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
                                     [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)Quantitycount] forKey:@"Quantity"];
                                     [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
+                                      indexno=k;
                                 }
                             }
                         }
@@ -1948,7 +2047,117 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
     [self.delegate function:Cir_data];
     [_collectionSingletable reloadData];
     [_collectionDoubletable reloadData];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectallindexx inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:indexno inSection:0];
+    [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+}
+-(void)ShoppingListToCircularAddRelatedCountToatalQty:(NSMutableDictionary*)ReData
+{
+    
+         NSInteger indexno;
+     NSInteger count;
+     NSInteger qtycount;
+    NSInteger Quantitycount;
+    if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferTypeId"] integerValue]==2)
+    {
+        
+        for (int i=0; i<[Cir_data count]; i++)
+        {
+            if ([ReData[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue] ||[ReData[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([ReData[@"CouponID"] integerValue]==[Cir_data[i][@"CouponID"] integerValue])
+                {
+                    count=[Cir_data[i][@"TotalQuantity"] integerValue];
+                    qtycount=[Cir_data[i][@"Quantity"] integerValue];
+                    if (count>0 || count==0)
+                    {
+                        
+                        count++;
+                        qtycount++;
+                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[Cir_data objectAtIndex:i]];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)count] forKey:@"TotalQuantity"];
+                         [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)qtycount] forKey:@"Quantity"];
+                        [Cir_data replaceObjectAtIndex:i withObject:Cir_Dicts];
+                    }
+                }
+            }
+        }
+        for (int k=0; k<[productList count]; k++)
+        {
+            if ([ReData[@"PrimaryOfferTypeId"] integerValue]==[productList[k][@"PrimaryOfferTypeId"] integerValue] ||[ReData[@"PrimaryOfferTypeId"] integerValue]==[productList[k][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([ReData[@"CouponID"] integerValue]==[productList[k][@"CouponID"] integerValue])
+                {
+                    count=[productList[k][@"TotalQuantity"] integerValue];
+                     qtycount=[productList[k][@"Quantity"] integerValue];
+                    if (count>0 || count==0)
+                    {
+                        count++;
+                        qtycount++;
+                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)count] forKey:@"TotalQuantity"];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)qtycount] forKey:@"Quantity"];
+                        [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
+                        indexno=k;
+                    }
+                }
+            }
+        }
+        
+    }
+  else if ([ReData[@"PrimaryOfferTypeId"] integerValue]==1)
+    {
+        
+        for (int i=0; i<[Cir_data count]; i++)
+        {
+            if ([ReData[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue])
+            {
+                if ([ReData[@"OfferCode"] integerValue]==[Cir_data[i][@"UPC"] integerValue] || [ReData[@"UPC"] integerValue]==[Cir_data[i][@"UPC"] integerValue])
+                {
+                    Quantitycount=[Cir_data[i][@"Quantity"] integerValue];
+                    if (Quantitycount>0 || Quantitycount==0)
+                    {
+                        Quantitycount++;
+                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[Cir_data objectAtIndex:i]];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)Quantitycount] forKey:@"Quantity"];
+                        [Cir_data replaceObjectAtIndex:i withObject:Cir_Dicts];
+                    }
+                }
+            }
+        }
+        
+        
+        for (int k=0; k<[productList count]; k++)
+        {
+            if ([ReData[@"PrimaryOfferTypeId"] integerValue]==[productList[k][@"PrimaryOfferTypeId"] integerValue])
+            {
+                if ([ReData[@"OfferCode"] integerValue]==[productList[k][@"UPC"] integerValue] || [ReData[@"UPC"] integerValue]==[productList[k][@"UPC"] integerValue])
+                {
+                    
+                    Quantitycount=[productList[k][@"Quantity"] integerValue];
+                    if (Quantitycount>0 || Quantitycount==0)
+                    {
+                        Quantitycount++;
+                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
+                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%ld",(long)Quantitycount] forKey:@"Quantity"];
+                        [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
+                         indexno=k;
+                    }
+                }
+            }
+        }
+        
+        
+    }
+    
+    
+    [self.delegate function:Cir_data];
+     //[UIView setAnimationsEnabled:NO];
+    [_collectionSingletable reloadData];
+    [_collectionDoubletable reloadData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:indexno inSection:0];
     [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
     [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
@@ -1986,7 +2195,6 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
     }
     
 }
-
 
 -(void)Removeprouct:(NSInteger)index
 {
@@ -2042,13 +2250,12 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                     [selectCatidArray replaceObjectAtIndex:index withObject:dict];
                     
                     // [getBackuparray addObjectsFromArray:selectCatidArray];
-                    
-//                     [[SingleTanGlobalClass instance] MoreCouponseIdChangeStoreAll:selectCatidArray];
+                   //  [[SingleTanGlobalClass instance] MoreCouponseIdChangeStoreAll:selectCatidArray];
                 }
                 else
                 {
-                    dict=[[NSMutableDictionary alloc] initWithDictionary:productList[index]];
-                    [dict setObject:@"0" forKey:@"ListCount"];
+                     dict=[[NSMutableDictionary alloc] initWithDictionary:productList[index]];
+                     [dict setObject:@"0" forKey:@"ListCount"];
                      [productList replaceObjectAtIndex:index withObject:dict];
                
                 }
@@ -2148,11 +2355,7 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
         {
                [dicts setObject:@"0" forKey:@"ListCount"];
             
-            
-            
-            
-            
-            for (int i=0; i<[Cir_data count]; i++)
+             for (int i=0; i<[Cir_data count]; i++)
             {
                 if ([dicts[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue] ||[dicts[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue])
                 {
@@ -2172,11 +2375,6 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
         else
         {
               [dicts setObject:@"0" forKey:@"ListCount"];
-            
-            
-            
-            
-            
             for (int i=0; i<[Cir_data count]; i++)
             {
                 if ([dicts[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue])
@@ -2190,10 +2388,6 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                     }
                 }
             }
-            
-            
-            
-            
         }
         [productList replaceObjectAtIndex:SelectedProductIndex withObject:dicts];
         [self.delegate function:Cir_data];
@@ -2252,12 +2446,7 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
             }
         }
        
-        
-        
-        
-        
-        
-    }
+   }
     
     [productList replaceObjectAtIndex:SelectedProductIndex withObject:dicts];
      [self.delegate function:Cir_data];
@@ -2282,12 +2471,98 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
   
    //[self.delegate getshopinglist];
 }
+-(void)shoppingToCircularIndexdataClear:(NSMutableDictionary*)backdata
+{
+    
+    
+    
+    
+    if ([backdata[@"PrimaryOfferTypeId"]integerValue]==3 || [backdata[@"PrimaryOfferTypeId"]integerValue]==2)
+    {
+        
+        
+        for (int i=0; i<[Cir_data count]; i++)
+        {
+            if ([backdata[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([backdata[@"CouponID"] integerValue]==[Cir_data[i][@"CouponID"] integerValue])
+                {
+                    NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[Cir_data objectAtIndex:i]];
+                  
+                    [Cir_Dicts setObject:@"0" forKey:@"Quantity"];
+                    [Cir_Dicts setObject:@"0" forKey:@"TotalQuantity"];
+                    [Cir_data replaceObjectAtIndex:i withObject:Cir_Dicts];
+                }
+            }
+        }
+        
+       
+        for (int k=0; k<[productList count]; k++)
+        {
+            if ([backdata[@"PrimaryOfferTypeId"] integerValue]==[productList[k][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([backdata[@"CouponID"] integerValue]==[productList[k][@"CouponID"] integerValue])
+                {
+                    NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
+                    [Cir_Dicts setObject:@"0" forKey:@"Quantity"];
+                    [Cir_Dicts setObject:@"0" forKey:@"TotalQuantity"];
+                    [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
+                }
+            }
+        }
+        
+        
+    }
+    else if ([backdata[@"PrimaryOfferTypeId"]integerValue]==1)
+    {
+        
+        for (int i=0; i<[Cir_data count]; i++)
+        {
+            if ([backdata[@"PrimaryOfferTypeId"] integerValue]==[Cir_data[i][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([backdata[@"CouponID"] integerValue]==[Cir_data[i][@"CouponID"] integerValue])
+                {
+                    NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[Cir_data objectAtIndex:i]];
+                    [Cir_Dicts setObject:@"0" forKey:@"Quantity"];
+                    [Cir_Dicts setObject:@"0" forKey:@"TotalQuantity"];
+                    [Cir_data replaceObjectAtIndex:i withObject:Cir_Dicts];
+                }
+            }
+        }
+        
+        
+        for (int k=0; k<[productList count]; k++)
+        {
+            if ([backdata[@"PrimaryOfferTypeId"] integerValue]==[productList[k][@"PrimaryOfferTypeId"] integerValue])
+            {
+                
+                if ([backdata[@"OfferCode"] integerValue]==[productList[k][@"UPC"] integerValue])
+                {
+                    NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
+                    [Cir_Dicts setObject:@"0" forKey:@"Quantity"];
+                    [Cir_Dicts setObject:@"0" forKey:@"TotalQuantity"];
+                    [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
+                }
+            }
+        }
+   }
+       [self.delegate function:Cir_data];
+      [_collectionSingletable reloadData];
+      [_collectionDoubletable reloadData];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:indexno inSection:0];
+//    [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+//    [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    
+}
 -(void)shoppinglisttocircularQuantityUpdate:(NSMutableDictionary*)dict
 {
     
     
-        NSString*UPCShopping=dict[@"OfferCode"];
-        NSString*Quantity=dict[@"Quantity"];
+               NSInteger indexno;
+               NSString*Quantity=dict[@"Quantity"];
 
 
             for (int i=0; i<[Cir_data count]; i++)
@@ -2314,20 +2589,48 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
                         [Cir_Dicts setObject:Quantity forKey:@"Quantity"];
                         [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
-                        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:k inSection:0];
-                        [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
-                        [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+                        indexno=k;
                     }
                 }
             }
          [self.delegate function:Cir_data];
          [_collectionSingletable reloadData];
          [_collectionDoubletable reloadData];
-   
-    
-   
-   
+         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:indexno inSection:0];
+         [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+         [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
  
+}
+-(void)ClearAllDataShoppingToCircular
+{
+
+    for (int i=0; i<[Cir_data count]; i++)
+    {
+
+                NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[Cir_data objectAtIndex:i]];
+                [Cir_Dicts setObject:@"0" forKey:@"ListCount"];
+                [Cir_Dicts setObject:@"0" forKey:@"Quantity"];
+                [Cir_Dicts setObject:@"0" forKey:@"ClickCount"];
+                [Cir_Dicts setObject:@"0" forKey:@"TotalQuantity"];
+                [Cir_data replaceObjectAtIndex:i withObject:Cir_Dicts];
+     
+    }
+    
+    for (int k=0; k<[productList count]; k++)
+    {
+
+                NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[productList objectAtIndex:k]];
+                [Cir_Dicts setObject:@"0" forKey:@"ListCount"];
+                [Cir_Dicts setObject:@"0" forKey:@"Quantity"];
+                [Cir_Dicts setObject:@"0" forKey:@"ClickCount"];
+                [Cir_Dicts setObject:@"0" forKey:@"TotalQuantity"];
+                [productList replaceObjectAtIndex:k withObject:Cir_Dicts];
+    
+    }
+    [self.delegate function:Cir_data];
+    [_collectionDoubletable reloadData];
+    [_collectionSingletable reloadData];
+  
 }
 
 //  related items remove  quantity and Details page remove  quantity
@@ -2390,10 +2693,7 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:SelectedProductIndex inSection:0];
         [_collectionSingletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
         [_collectionDoubletable scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
-       
-   
-  
-    
+ 
 }
 
 
@@ -2499,9 +2799,6 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                   [backdatadict setObject:@"1" forKey:@"ClickCount"];
                   [backdatadict setObject:@"1" forKey:@"ListCount"];
                   [backdatadict setObject:str forKey:@"Quantity"];
-                  
-                  
-                  
                   
                   for (int i=0; i<[Cir_data count]; i++)
                   {
@@ -2649,26 +2946,26 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
     
      if (tableView==_Filtertable)
      {
-            // [_Filtertable cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
          
-        
+       // [_Filtertable cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
          
-        if(indexPath.row==0)
+         if(indexPath.row==0)
         {
+            
+            
+            
               catbyid=0;
                addint=0;
                 productList=[[NSMutableArray alloc] init];
-              [productList removeAllObjects];
-//  primaryoffertypeid=0;
+                [productList removeAllObjects];
+              //  primaryoffertypeid=0;
             for (int j=0; j<[Cir_data count]; j++)
             {
-                if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"isSearching"] isEqualToString:@"isSearching"])
-                {
-                    
-                      [productList  addObject:Cir_data[j]];
-                }
-                else
-                {
+                    if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"isSearching"] isEqualToString:@"isSearching"])
+                    {   [productList  addObject:Cir_data[j]];
+                    }
+                    else
+                    {
                     if ([Cir_data[j][@"PrimaryOfferTypeId"] integerValue]==primaryoffertypeid)
                     {
                          [productList  addObject:Cir_data[j]];
@@ -2828,20 +3125,15 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                                          }
                                          else
                                          {
+                                           
                                              
-                                             if ([Cir_data[j][@"PrimaryOfferTypeId"] integerValue]==primaryoffertypeid && primaryoffertypeid==1)
+                                          //NSLog(@"PrimaryOfferTypeId:%d",[Cir_data[j][@"PrimaryOfferTypeId"] integerValue]);
+                                             if ([Cir_data[j][@"PrimaryOfferTypeId"] integerValue]==primaryoffertypeid)
                                              {
                                                  [productList  addObject:Cir_data[j]];
                                              }
-                                             else  if ([Cir_data[j][@"PrimaryOfferTypeId"] integerValue]==primaryoffertypeid && primaryoffertypeid==2)
-                                             {
-                                                 [productList  addObject:Cir_data[j]];
-                                             }
-                                             else  if ([Cir_data[j][@"PrimaryOfferTypeId"] integerValue]==primaryoffertypeid && primaryoffertypeid==3)
-                                             {
-                                                 [productList  addObject:Cir_data[j]];
-                                             }
-                                             else
+                                         
+                                             else if(primaryoffertypeid==0)
                                              {
                                                  
                                                              if (j==0)
@@ -2912,10 +3204,7 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                                                    }
                                                    
                                                }
-                                                
-                                                
-                                             
-                                                    catbyid=[FilterByCatArray[indexPath.row][@"CategoryID"] integerValue];
+                                                   catbyid=[FilterByCatArray[indexPath.row][@"CategoryID"] integerValue];
                                                    // NSLog(@"catby:%d",catbyid);
                                             }
             
@@ -2942,13 +3231,10 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
            [self sortbyviewhide];
         if (indexPath.row==0)
         {
-               if (primaryoffertypeid!=0)
-               {
+
                    sortedindex=1;
-               }
-            
-               _HeaderTitleSortbyclass.text=@"Sort by Recommended";
-                [self RecommendedSort];
+                   _HeaderTitleSortbyclass.text=@"Sort by Recommended";
+                    [self RecommendedSort];
        }
         else if (indexPath.row==1)
         {
@@ -2960,19 +3246,13 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
        }
          else if (indexPath.row==2)
         {
-               if (primaryoffertypeid!=0)
-               {
+
                     sortedindex=3;
-               }
-                 _HeaderTitleSortbyclass.text=@"Sort by Offers Type";
-                 [self Offertypes];
+                    _HeaderTitleSortbyclass.text=@"Sort by Offers Type";
+                    [self Offertypes];
         }
         
     }
-    
-    
-    
-  
     
     [_collectionDoubletable reloadData];
     [_collectionSingletable reloadData];
@@ -2982,125 +3262,104 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
 }
 -(void)sortingBysavings
 {
+    
+    
+    
     NSLog(@"sortedindex:%d",sortedindex);
     NSLog(@"catbyid:%d",catbyid);
     NSLog(@"primaryoffertypeid:%d",primaryoffertypeid);
     
+    savingarray=[[NSMutableArray alloc] init];
+    [savingarray removeAllObjects];
     if (sortedindex==2)
     {
         NSMutableArray*arr=[[NSMutableArray alloc] init];
         [arr addObjectsFromArray:productList];
-        
-        sortedindex=2;
-        _HeaderTitleSortbyclass.text=@"Sort by Savings";
-        savingarray=[[NSMutableArray alloc] init];
-        [savingarray removeAllObjects];
-        for (int i=0; i<arr.count; i++){
+       _HeaderTitleSortbyclass.text=@"Sort by Savings";
+       for (int i=0; i<arr.count; i++)
+        {
             
-            if ([arr[i][@"CouponID"] integerValue]==1 || [arr[i][@"CouponID"] integerValue]==10)
-            {
-                    NSLog(@"CouponID:%d",[arr[i][@"CouponID"] integerValue]);
-            }
-            else
-            {
-                    float sav=[arr[i][@"Savings"] floatValue];
-                    NSMutableDictionary*dicts=[[NSMutableDictionary alloc] initWithDictionary:arr[i]];
-                    [dicts setValue:[NSNumber numberWithFloat:sav] forKey:@"Savings"];
-                    [savingarray addObject:dicts];
-            }
-            
-            
-            
-        }
-         productList=[[[NSMutableArray alloc] init] mutableCopy];
-         [productList removeAllObjects];
-         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"Savings" ascending:NO];
-         NSMutableArray*pListcopy=(NSMutableArray*)[savingarray sortedArrayUsingDescriptors:@[sort]];
-         [productList addObjectsFromArray:pListcopy];
+                        if ([arr[i][@"CouponID"] integerValue]==1 || [arr[i][@"CouponID"] integerValue]==10)
+                        {
+                            
+                        }
+                        else
+                        {
+                                float sav=[arr[i][@"Savings"] floatValue];
+                                NSMutableDictionary*dicts=[[NSMutableDictionary alloc] initWithDictionary:arr[i]];
+                                [dicts setValue:[NSNumber numberWithFloat:sav] forKey:@"Savings"];
+                                [savingarray addObject:dicts];
+                                NSLog(@"CouponID:%d",arr[i]);
+                            
+                        }
+       }
+  
     }
     
-  
+    productList=[[NSMutableArray alloc] init];
+    [productList removeAllObjects];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"Savings" ascending:NO];
+    NSMutableArray*pListcopy=(NSMutableArray*)[savingarray sortedArrayUsingDescriptors:@[sort]];
+    [productList addObjectsFromArray:pListcopy];
     
 }
 -(void)RecommendedSort
 {
-    NSLog(@"sortedindex:%d",sortedindex);
-    NSLog(@"catbyid:%d",catbyid);
-    NSLog(@"primaryoffertypeid:%d",primaryoffertypeid);
+    
+    
+    
+     NSLog(@"sortedindex:%d",sortedindex);
+     NSLog(@"catbyid:%d",catbyid);
+     NSLog(@"primaryoffertypeid:%d",primaryoffertypeid);
     
      NSInteger addintsortR;
      savingarray=[[NSMutableArray alloc] init];
      [savingarray removeAllObjects];
     
-     productList=[[NSMutableArray alloc] init];
-     [productList removeAllObjects];
-   
-    
 
-    if (sortedindex==1)
+    if (catbyid!=0)
     {
-                   NSMutableArray*array=[[NSMutableArray alloc] initWithArray:productList];
-                     if(catbyid!=0)
-                      {
-                          for (int i=0; i<Cir_data.count; i++)
-                          {
-                              
-                                     if ([Cir_data[i][@"CategoryID"] integerValue]==catbyid)
-                                     {
-                                         [savingarray addObject:Cir_data[i]];
-                                     }
-                      }
+     
+       
+        
+        NSSortDescriptor *sorts = [NSSortDescriptor sortDescriptorWithKey:@"Savings" ascending:YES];
+        NSMutableArray*pListcopyy=(NSMutableArray*)[productList sortedArrayUsingDescriptors:@[sorts]];
+        
+        productList=[[NSMutableArray alloc] init];
+        [productList removeAllObjects];
+        [productList addObjectsFromArray:pListcopyy];
+        
+        
+        NSMutableArray*arry=[[NSMutableArray alloc] init];
+        [arry addObjectsFromArray:productList];
+        
+        
+        for (int i=0; i<arry.count; i++)
+        {
+            
+            if ([arry[i][@"CouponID"] integerValue]==1 || [arry[i][@"CouponID"] integerValue]==10)
+            {
+               
+            }
+            else
+            {
+                   // NSLog(@"CategoryID:%d",[arry[i][@"CategoryID"] integerValue]);
+                   [savingarray addObject:arry[i]];
+            }
+        }
 
-                      }
-                     else if(offersbyid==1)
-                     {
-                         for (int i=0; i<Cir_data.count; i++)
-                         {
-                             if ([Cir_data[i][@"PrimaryOfferTypeId"] integerValue]==primaryoffertypeid)
-                             {
-                                 [savingarray addObject:Cir_data[i]];
-                             }
-                             else if ([Cir_data[i][@"PrimaryOfferTypeId"] integerValue]==0)
-                             {
-                                 [savingarray addObject:Cir_data[i]];
-                             }
-                         }
-                     }
-
-                        else
-                        {
-                                    for (int k=0; k<array.count; k++)
-                                    {
-                                        if ([array[k][@"CouponID"] integerValue]==1 || [array[k][@"CouponID"] integerValue]==10)
-                                        {
-                                           
-                                        }
-                                        else
-                                        {
-                                              [savingarray addObject:array[k]];
-                                        }
-                                    }
-                            
-                       }
-         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
-         NSMutableArray*pListcopy=(NSMutableArray*)[savingarray sortedArrayUsingDescriptors:@[sort]];
-         [productList addObjectsFromArray:pListcopy];
-    }
-   else if (catbyid!=0)
-   {
-       for (int i=0; i<Cir_data.count; i++)
-       { if ([Cir_data[i][@"CategoryID"] integerValue]==catbyid)
-       {
-           [savingarray addObject:Cir_data[i]];
-       }
-       }
-       NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
+        productList=[[NSMutableArray alloc] init];
+        [productList removeAllObjects];
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
         NSMutableArray*pListcopy=(NSMutableArray*)[savingarray sortedArrayUsingDescriptors:@[sort]];
         [productList addObjectsFromArray:pListcopy];
+        
    }
-    else if (primaryoffertypeid==0)
+    else if (primaryoffertypeid==0 && sortedindex==1)
     {
-            addintsortR=0;
+             addintsortR=0;
+             productList=[[NSMutableArray alloc] init];
+             [productList removeAllObjects];
          for (int j=0; j<[Cir_data count]; j++)
          {
                 if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"isSearching"] isEqualToString:@"isSearching"])
@@ -3122,7 +3381,7 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                  {
                      if ([Cir_data[j][@"TileNumber"]integerValue]==999)
                      { if (addintsortR==0)
-                     { addintsortR=1;
+                     {   addintsortR=1;
                          [productList  addObjectsFromArray:additonalofrray];
                          [productList  addObject:Cir_data[j]];
                      }
@@ -3139,14 +3398,12 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
              }
            
         }
-         NSMutableArray*aray=[[NSMutableArray alloc] initWithArray:productList];
-        
-          productList=[[NSMutableArray alloc] init];
-          [productList removeAllObjects];
-        
-         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
-          NSMutableArray*pListcopy=(NSMutableArray*)[aray sortedArrayUsingDescriptors:@[sort]];
-         [productList addObjectsFromArray:pListcopy];
+   NSMutableArray*aray=[[NSMutableArray alloc] initWithArray:productList];
+   productList=[[NSMutableArray alloc] init];
+   [productList removeAllObjects];
+   NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
+   NSMutableArray*pListcopy=(NSMutableArray*)[aray sortedArrayUsingDescriptors:@[sort]];
+   [productList addObjectsFromArray:pListcopy];
     }
     else //if(catbyid!=0)
     {
@@ -3163,7 +3420,8 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
                 [savingarray addObject:Cir_data[i]];
             }
         }
-        
+        productList=[[NSMutableArray alloc] init];
+        [productList removeAllObjects];
         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
         NSMutableArray*pListcopy=(NSMutableArray*)[savingarray sortedArrayUsingDescriptors:@[sort]];
         [productList addObjectsFromArray:pListcopy];
@@ -3175,87 +3433,45 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
 }
 -(void)Offertypes
 {
-    
-    
     NSLog(@"sortedindex:%d",sortedindex);
     NSLog(@"catbyid:%d",catbyid);
     NSLog(@"primaryoffertypeid:%d",primaryoffertypeid);
-    
- 
-    
-    productList=[[NSMutableArray alloc] init];
-    [productList removeAllObjects];
     savingarray=[[NSMutableArray alloc] init];
     [savingarray removeAllObjects];
-    if (sortedindex==3)
+    if(catbyid!=0)
     {
-        NSMutableArray*arr=[[NSMutableArray alloc] initWithArray:productList];
-        if(catbyid!=0)
-        {
-                for (int i=0; i<Cir_data.count; i++)
-                {
-            
-                    if ([Cir_data[i][@"CategoryID"] integerValue]==catbyid)
-                    {
-                        [savingarray addObject:Cir_data[i]];
-                    }
-                
-                }
-          
-        }
-        else if(offersbyid==1)
-        {
-                    for (int i=0; i<Cir_data.count; i++)
-                    {
-                        if ([Cir_data[i][@"PrimaryOfferTypeId"] integerValue]==primaryoffertypeid)
-                        {
-                            [savingarray addObject:Cir_data[i]];
-                        }
-                        else if ([Cir_data[i][@"PrimaryOfferTypeId"] integerValue]==0)
-                        {
-                            [savingarray addObject:Cir_data[i]];
-                        }
-                    }
-        }
-        else
-        {
-            
-            
-            for (int k=0; k<arr.count; k++)
-            {
-                if ([arr[k][@"CouponID"] integerValue]==1 || [arr[k][@"CouponID"] integerValue]==10)
-                {
-                    
-                }
-                else
-                {
-                    [savingarray addObject:arr[k]];
-                }
-            }
-            
-        }
-     
 
-   
         
-        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
-        NSMutableArray*pListcopy=(NSMutableArray*)[savingarray sortedArrayUsingDescriptors:@[sort]];
-        [productList addObjectsFromArray:pListcopy];
-    }
-  else  if(catbyid!=0)
-    {
-          for (int i=0; i<Cir_data.count; i++)
-                { if ([Cir_data[i][@"CategoryID"] integerValue]==catbyid)
-                              {
-                                 [savingarray addObject:Cir_data[i]];
-                              }
-                }
-        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
+        NSSortDescriptor *sorts = [NSSortDescriptor sortDescriptorWithKey:@"Savings" ascending:YES];
+        NSMutableArray*pListcopyy=(NSMutableArray*)[productList sortedArrayUsingDescriptors:@[sorts]];
+         productList=[[NSMutableArray alloc] init];
+        [productList removeAllObjects];
+        [productList addObjectsFromArray:pListcopyy];
+        NSMutableArray*arry=[[NSMutableArray alloc] init];
+        [arry addObjectsFromArray:productList];
+        
+        for (int i=0; i<arry.count; i++)
+        {
+            
+            if ([arry[i][@"CouponID"] integerValue]==1 || [arry[i][@"CouponID"] integerValue]==10)
+            {
+                
+            }
+            else
+            {
+                     [savingarray addObject:arry[i]];
+            }
+        }
+         productList=[[NSMutableArray alloc] init];
+         [productList removeAllObjects];
+         NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
          NSMutableArray*pListcopy=(NSMutableArray*)[savingarray sortedArrayUsingDescriptors:@[sort]];
-          [productList addObjectsFromArray:pListcopy];
+         [productList addObjectsFromArray:pListcopy];
     }
     else
     {
+        
+        
         for (int i=0; i<Cir_data.count; i++)
         {
             if ([Cir_data[i][@"PrimaryOfferTypeId"] integerValue]==primaryoffertypeid)
@@ -3268,6 +3484,8 @@ if([ReData[@"PrimaryOfferTypeId"] integerValue]==3 || [ReData[@"PrimaryOfferType
             }
             
         }
+         productList=[[NSMutableArray alloc] init];
+         [productList removeAllObjects];
          NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"PrimaryOfferTypeId" ascending:NO];
          NSMutableArray*pListcopy=(NSMutableArray*)[savingarray sortedArrayUsingDescriptors:@[sort]];
          [productList addObjectsFromArray:pListcopy];

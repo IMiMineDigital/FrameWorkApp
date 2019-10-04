@@ -432,6 +432,21 @@
         
         
     }
+    else if ([type  isEqual: @"/"] || [[string substringFromIndex: string.length - 2] isEqualToString:type])
+    {
+        
+        NSArray *myWords = [string componentsSeparatedByString:@"/"];
+        NSString*firstlatter=myWords[1];
+        NSString*second=[NSString stringWithFormat:@"%@%@",myWords[0],@"/"];
+        NSMutableAttributedString *attStrings = [[NSMutableAttributedString alloc] initWithString:firstlatter];
+        NSMutableAttributedString *attStringe = [[NSMutableAttributedString alloc] initWithString:second];
+        [attStrings addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0,1)];
+        [attStrings addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
+        
+        [attStringe appendAttributedString:attStrings];
+        return attStringe;
+        
+    }
     else if([type  isEqual: @"¢"])
     {
         
@@ -556,6 +571,23 @@
         
         
     }
+     else if ([type  isEqual: @"/"] || [[string substringFromIndex: string.length - 2] isEqualToString:type])
+     {
+         
+         
+         
+         NSArray *myWords = [string componentsSeparatedByString:@"/"];
+         NSString*firstlatter=myWords[1];
+         NSString*second=[NSString stringWithFormat:@"%@%@",myWords[0],@"/"];
+         NSMutableAttributedString *attStrings = [[NSMutableAttributedString alloc] initWithString:firstlatter];
+         NSMutableAttributedString *attStringe = [[NSMutableAttributedString alloc] initWithString:second];
+         [attStrings addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0,1)];
+         [attStrings addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
+         
+         [attStringe appendAttributedString:attStrings];
+         return attStringe;
+         
+     }
 else if([type  isEqual: @"¢"])
 {
 
@@ -609,73 +641,91 @@ else if([type  isEqual: @"F"])
     if ([type  isEqual: @"$"])
     {
         
-        NSDictionary *verdanaDict = [NSDictionary dictionaryWithObject:smallFontnumbers forKey:NSFontAttributeName];
-        NSArray *myArray = [string componentsSeparatedByString:@"."];
-        NSString * bttString=@"";
-        NSString*str;
+                            NSDictionary *verdanaDict = [NSDictionary dictionaryWithObject:smallFontnumbers forKey:NSFontAttributeName];
+                            NSArray *myArray = [string componentsSeparatedByString:@"."];
+                            NSString * bttString=@"";
+                            NSString*str;
         
-        if (myArray.count>1)
-        {
-            bttString= myArray[1];
-            str=myArray[0];
-            
-            attString = [[NSMutableAttributedString alloc] initWithString:str];
-            [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0, 1)];
-            [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
-            
-            [attString beginEditing];
-            
-            NSMutableAttributedString*  buyString=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",bttString]  attributes:verdanaDict];
-            [buyString addAttribute:NSBaselineOffsetAttributeName
-                              value:@(6.0)
-                              range:NSMakeRange(0, buyString.length)];
-            [attString appendAttributedString:buyString];
-            
-        }
-        else if (myArray.count==1 && ![[string substringFromIndex: [string length] - 1] isEqualToString:@"F"])
-        {
-            [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0, 1)];
-            [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
-        }
-        else if ([type  isEqual: @"$"] || [[string substringFromIndex: [string length] - 1] isEqualToString:@"F"])
-        {
-            
-            [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0, 1)];
-            [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
-            
-            
-            [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(string.length - 3, 3)];
-            [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(string.length - 3, 3)];
-        }
-        else if ([type  isEqual: @"$"] || [[string substringFromIndex: [string length] - 1] isEqualToString:@"F"] || [[string substringFromIndex: [string length] - 5] isEqualToString:@"¢"])
-        {
-            [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0, 1)];
-            [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
-            
-            
-            [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(string.length - 3, 3)];
-            [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(string.length - 3, 3)];
-            
-            [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(string.length - 5, 5)];
-            [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(string.length - 5,5)];
-            
-        }
-        else
-        {
-            bttString=@"";
-            
-            [attString beginEditing];
-            
-            NSMutableAttributedString*  buyString=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",bttString]  attributes:verdanaDict];
-            [buyString addAttribute:NSBaselineOffsetAttributeName
-                              value:@(6.0)
-                              range:NSMakeRange(0, buyString.length)];
-            [attString appendAttributedString:buyString];
-        }
+                            if (myArray.count>1)
+                            {
+                                bttString= myArray[1];
+                                str=myArray[0];
+                                
+                                attString = [[NSMutableAttributedString alloc] initWithString:str];
+                                [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0, 1)];
+                                [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
+                                
+                                [attString beginEditing];
+                                
+                                NSMutableAttributedString*  buyString=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",bttString]  attributes:verdanaDict];
+                                [buyString addAttribute:NSBaselineOffsetAttributeName
+                                                  value:@(6.0)
+                                                  range:NSMakeRange(0, buyString.length)];
+                                [attString appendAttributedString:buyString];
+                                
+                            }
+                            else if (myArray.count==1 && ![[string substringFromIndex: [string length] - 1] isEqualToString:@"F"])
+                            {
+                                [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0, 1)];
+                                [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
+                            }
+                            else if ([type  isEqual: @"$"] || [[string substringFromIndex: [string length] - 1] isEqualToString:@"F"])
+                            {
+                                
+                                [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0, 1)];
+                                [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
+                                
+                                
+                                [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(string.length - 3, 3)];
+                                [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(string.length - 3, 3)];
+                            }
+        
+                            else if ([type  isEqual: @"$"] || [[string substringFromIndex: [string length] - 1] isEqualToString:@"F"] || [[string substringFromIndex: [string length] - 5] isEqualToString:@"¢"])
+                            {
+                                [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0, 1)];
+                                [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
+                                
+                                
+                                [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(string.length - 3, 3)];
+                                [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(string.length - 3, 3)];
+                                
+                                [attString addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(string.length - 5, 5)];
+                                [attString addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(string.length - 5,5)];
+                                
+                            }
+                            else
+                            {
+                                bttString=@"";
+                                
+                                [attString beginEditing];
+                                
+                                NSMutableAttributedString*  buyString=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",bttString]  attributes:verdanaDict];
+                                [buyString addAttribute:NSBaselineOffsetAttributeName
+                                                  value:@(6.0)
+                                                  range:NSMakeRange(0, buyString.length)];
+                                [attString appendAttributedString:buyString];
+                            }
         
         
         
         
+        
+    }
+    else if ([type  isEqual: @"/"] || [[string substringFromIndex: string.length - 2] isEqualToString:type])
+    {
+        
+       
+  
+         NSArray *myWords = [string componentsSeparatedByString:@"/"];
+         NSString*firstlatter=myWords[1];
+           NSString*second=[NSString stringWithFormat:@"%@%@",myWords[0],@"/"];
+         NSMutableAttributedString *attStrings = [[NSMutableAttributedString alloc] initWithString:firstlatter];
+          NSMutableAttributedString *attStringe = [[NSMutableAttributedString alloc] initWithString:second];
+         [attStrings addAttribute:NSFontAttributeName value:(smallFontnumbers) range:NSMakeRange(0,1)];
+         [attStrings addAttribute:(NSString*)kCTSuperscriptAttributeName value:@"1" range:NSMakeRange(0, 1)];
+        
+         [attStringe appendAttributedString:attStrings];
+        return attStringe;
         
     }
     else if([type  isEqual: @"¢"])

@@ -16,15 +16,17 @@
 #import "BarCodeViewConrtoller.h"
 #import "PurchaseHistoryViewController.h"
 #import "PurchaseHistoryViewController.h"
+
 @implementation ApiHendlerClass
 {
-      UIStoryboard *stort;
+    UIStoryboard *stort;
     UIWindow*windows;
     HomeViewController*HomeViewControllerOBj;
 }
+
 -(void)getAccessToken:(NSString*)baseurl
 {
- if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus]==NotReachable)
+    if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus]==NotReachable)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                         message:@"Check your internet connection"
@@ -32,17 +34,16 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-
     }
     else
     {
         NSDictionary *headers = @{
-                                   @"Password": @"123456",
-                                   @"username":@"imemine@usa.com",
-                                   @"ClientID":@"1",
-                                   @"Content-Type": @"application/x-www-form-urlencoded"
-                                   };
-
+            @"Password": @"123456",
+            @"username":@"imemine@usa.com",
+            @"ClientID":@"1",
+            @"Content-Type": @"application/x-www-form-urlencoded"
+        };
+        
         NSMutableData *postData = [[NSMutableData alloc] initWithData:[@"grant_type=password" dataUsingEncoding:NSUTF8StringEncoding]];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:baseurl]];
         [request setHTTPMethod:@"POST"];
@@ -55,21 +56,21 @@
                                                       returningResponse:&response
                                                                   error:&error];
         NSMutableDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:dataResponse options:NSJSONReadingAllowFragments error:&error];
-       if(dataResponse != nil)
+        if(dataResponse != nil)
         {
             NSMutableDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:dataResponse options:NSJSONReadingAllowFragments error:&error];
-          //  NSLog(@"jsonObject:%@",jsonObject);
-             NSUInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
+            //  NSLog(@"jsonObject:%@",jsonObject);
+            NSUInteger statusCode = ((NSHTTPURLResponse *)response).statusCode;
             if (statusCode== 200)
             {
                 [[NSUserDefaults standardUserDefaults] setObject:jsonObject forKey:ACCESS_TOKEN];
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
-
         }
     }
-
 }
+
+
 -(void)GlobalNsuserDefaultValues
 {
     NSArray *keys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
@@ -90,7 +91,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"Tutorials"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
- 
+    
     if (![keys containsObject:@"ischeckclear"])
     {
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"ischeckclear"];
@@ -106,19 +107,30 @@
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"isSearching"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    if (![keys containsObject:@"LoginData"])
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"LoginData"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
-     [self getAccessToken:ACCESSTOKEN_URL];
-//    [self getAccessToken:[NSString stringWithFormat:@"%@%@",GLOBAL_URL,ACCESSTOKEN_URL]];
-   
+    [self getAccessToken:ACCESSTOKEN_URL];
+    //    [self getAccessToken:[NSString stringWithFormat:@"%@%@",GLOBAL_URL,ACCESSTOKEN_URL]];
 }
+
+
 -(void)getLoginData:(NSString*)name pass:(NSString*)pass
 {
-    
+    NSMutableDictionary *stDict = [[NSMutableDictionary alloc] init];
+    [stDict setValue:name forKey:@"name"];
+    [stDict setValue:pass forKey:@"pass"];
+    [stDict setValue:@"0" forKey:@"id"];
+    [[NSUserDefaults standardUserDefaults] setObject:stDict forKey:@"LoginData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus]==NotReachable)
     {
-       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                       message:@"Check your internet connection"
-                                                    delegate:self
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:@"Check your internet connection"
+                                                       delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
@@ -128,11 +140,11 @@
         [self GlobalNsuserDefaultValues];
         NSDictionary *headers = @{ @"Content-Type": @"application/x-www-form-urlencoded",
                                    @"Authorization": [NSString stringWithFormat:@"%@ %@",[[[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN] valueForKey:@"token_type"],[[[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN] valueForKey:@"access_token"]],
-                                   };
+        };
         NSString *post = [NSString stringWithFormat:@"UserName=%@&Password=%@",name,pass];
         NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-//        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",GLOBAL_URL,LOGIN_URL]]];
-            NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:LOGIN_URL]];
+        //        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",GLOBAL_URL,LOGIN_URL]]];
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:LOGIN_URL]];
         [request setHTTPMethod:@"POST"];
         [request setAllHTTPHeaderFields:headers];
         [request setHTTPBody:postData];
@@ -144,31 +156,42 @@
         {
             NSMutableDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
             NSMutableArray* arrayObj=[[NSMutableArray alloc] init];
-             // NSLog(@"getAccessToken:%@",[[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN]);
-           //  NSLog(@"login data:%@",jsonObject);
-//            NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
-//           NSLog(@"CFBundleVersion:%@",appVersion);
+            //  NSLog(@"getAccessToken:%@",[[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN]);
+            // NSLog(@"login data:%@",jsonObject);
+            // NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+            NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+            NSLog(@"CFBundleVersion:%@",build);
+            
+            //            NSLog(@"operatingSystemVersion:%@",[[NSProcessInfo processInfo] operatingSystemVersion]);
+            NSString *uniqueIdentifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+            NSLog(@"uniqueIdentifier:%@",uniqueIdentifier);
+            UIDevice *deviceInfo = [UIDevice currentDevice];
+            NSLog(@"Device name:  %@", deviceInfo.name);
+            NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
+            NSString*date=[dateFormatter stringFromDate:[NSDate date]];
+            
             if ([[jsonObject valueForKey:@"errorcode"] integerValue]==0)
             {
                 [arrayObj addObject:jsonObject];
-            
+                
                 [[NSUserDefaults standardUserDefaults] setObject:arrayObj[0][@"message"] forKey:USERDATA];
                 [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                //[self GetIPAddressApi:@"20-08-2019" email:name pass:pass];
                 [self GetshopperListIdApi];
             }
         }
     }
 }
 
+
 -(id)CircularPage
 {
-    
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"isSearching"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    
-    
-   if(isiPhone5s)
+    if(isiPhone5s)
     {
         stort = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle bundleForClass:HomeViewController.class]];
     }
@@ -189,30 +212,30 @@
     }
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"Tutorials"] integerValue]==0)
     {
-          PresentViewController*contro=[stort instantiateViewControllerWithIdentifier:@"PresentViewController"];
-          contro.comefrom=NSLocalizedString(@"Personal Ad", @"");
-         //contro.delegate=self;
-          [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"Tutorials"];
-          [[NSUserDefaults standardUserDefaults] synchronize];
-          UINavigationController*nav=[[UINavigationController alloc] initWithRootViewController:contro];
-          nav.navigationBarHidden=true;
-          return nav;
+        PresentViewController*contro=[stort instantiateViewControllerWithIdentifier:@"PresentViewController"];
+        contro.comefrom=NSLocalizedString(@"Personal Ad", @"");
+        //contro.delegate=self;
+        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"Tutorials"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        UINavigationController*nav=[[UINavigationController alloc] initWithRootViewController:contro];
+        nav.navigationBarHidden=true;
+        return nav;
     }
     else
     {
-           HomeViewController*controller=[stort instantiateViewControllerWithIdentifier:@"HomeViewController"];
-           controller.isCheckController=NSLocalizedString(@"Personal Ad", @"");
-           //controller.delegate=self;
-           UINavigationController*nav=[[UINavigationController alloc] initWithRootViewController:controller];
-           nav.navigationBarHidden=true;
-           return nav;
-   }
-   
+        HomeViewController*controller=[stort instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        controller.isCheckController=NSLocalizedString(@"Personal Ad", @"");
+        //controller.delegate=self;
+        UINavigationController*nav=[[UINavigationController alloc] initWithRootViewController:controller];
+        nav.navigationBarHidden=true;
+        return nav;
+    }
 }
+
 -(void)GetshopperListIdApi
 {
     NSDictionary *headers = @{@"Authorization": [NSString stringWithFormat:@"%@ %@",[[[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN] valueForKey:@"token_type"],[[[NSUserDefaults standardUserDefaults] objectForKey:ACCESS_TOKEN] valueForKey:@"access_token"]],
-                              };
+    };
     NSArray*arra=(NSArray*)[[[NSUserDefaults standardUserDefaults] objectForKey:USERDATA] valueForKey:@"MemberId"];
     NSURLComponents *components = [NSURLComponents componentsWithString:GETSHOPPERLISTID_URL];
     NSURLQueryItem *LoyaltyCardNumber = [NSURLQueryItem queryItemWithName:@"MemberId" value:arra[0]];
@@ -231,9 +254,10 @@
         
         [[NSUserDefaults standardUserDefaults] setObject:jsonObject[@"message"][@"ListName"] forKey:@"ShoppingListId"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-       // NSLog(@"jsonObject:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"ShoppingListId"]);
+        // NSLog(@"jsonObject:%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"ShoppingListId"]);
     }
 }
+
 -(id)shoppingListPage
 {
     if(isiPhone5s)
@@ -274,8 +298,8 @@
         nav.navigationBarHidden=true;
         return nav;
     }
-    
 }
+
 
 -(id)getPurcheaseHistoryPage
 {
@@ -316,41 +340,47 @@
         nav.navigationBarHidden=true;
         return nav;
     }
-  
-    
 }
+
+
 -(id)moreCouponse
 {
- return nil;
+    return nil;
 }
+
 -(void) dissmisscontroller
 {
-    UIWindow* windows= [[UIApplication sharedApplication] keyWindow];
-    [windows.rootViewController dismissViewControllerAnimated:NO completion:nil];
+        UIWindow* windows= [[UIApplication sharedApplication] keyWindow];
+        [windows.rootViewController dismissViewControllerAnimated:NO completion:nil];
+//    UIStoryboard*storybord=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController*vc=[storybord instantiateViewControllerWithIdentifier:@"ViewController"];
+//    [[UIApplication sharedApplication].keyWindow setRootViewController:vc];
 }
+
 -(void)soppinglist:(UIStoryboard*)str cont:(UIViewController*)con
 {   con=(UIViewController*)[str instantiateViewControllerWithIdentifier:@"SecondViewController"];
     NSString *storyboardID = storyboardID;
     UINavigationController*nav=[[UINavigationController alloc] initWithRootViewController:con];
     [nav.navigationController pushViewController:con animated:YES];
-  
 }
+
+
 -(void)logoutfunction
 {
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:USERDATA];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    
     [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:ACCESS_TOKEN];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"footerstr"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
-        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"footerstr"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"isSearching"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
-        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"isSearching"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"LoginData"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 

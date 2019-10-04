@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>10.9</string>
+	<string>10.10</string>
 	<key>CFBundleVersion</key>
-	<string>10.9</string>
+	<string>10.10</string>
 	<key>Main storyboard file base name </key>
 	<string>MainX</string>
 	<key>NSAppTransportSecurity</key>

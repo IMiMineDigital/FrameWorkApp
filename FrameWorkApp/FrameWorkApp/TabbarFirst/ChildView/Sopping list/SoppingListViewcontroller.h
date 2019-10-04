@@ -26,6 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)shoppingToCircularUpdateqty:(NSMutableDictionary*)dict;
 -(void)shoppingToCircularUpdateTotalqtyadd:(NSMutableDictionary*)dicts;
 -(void)shoppingToCircularUpdateTotalqtysub:(NSMutableDictionary*)dicts;
+
+-(void)shoppingTocircularAllDelete;
+-(void)shoppingTocircularindexdataClear:(NSMutableDictionary*)dicts;
 @end
 @interface SoppingListViewcontroller : UIViewController
 @property(weak,nonatomic)id<SoppingListViewcontrollerDelegate>delegate;

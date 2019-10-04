@@ -28,6 +28,11 @@
  
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
 - (void)setupScanningSession {
    
     NSArray*array=(NSArray*)[[[NSUserDefaults standardUserDefaults] objectForKey:USERDATA] valueForKey:@"ShopperID"];

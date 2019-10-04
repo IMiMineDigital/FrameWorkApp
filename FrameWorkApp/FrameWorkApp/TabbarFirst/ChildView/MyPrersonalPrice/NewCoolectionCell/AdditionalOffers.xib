@@ -53,8 +53,8 @@
                         <rect key="frame" x="120" y="0.0" width="199" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="addpin-ico.png" translatesAutoresizingMaskIntoConstraints="NO" id="j3m-jB-iD8">
-                                <rect key="frame" x="0.0" y="9" width="22" height="25"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="locationi.png" translatesAutoresizingMaskIntoConstraints="NO" id="j3m-jB-iD8">
+                                <rect key="frame" x="0.0" y="11" width="22" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-7k-dih">
@@ -80,6 +80,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="addpin-ico.png" width="20" height="20"/>
+        <image name="locationi.png" width="26" height="26"/>
     </resources>
 </document>

@@ -118,6 +118,11 @@
     });
     
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.historyDetailstable.backgroundColor = [UIColor whiteColor];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return detailsarry.count;

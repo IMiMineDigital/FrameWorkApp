@@ -258,6 +258,9 @@
 {
     _product_price.textColor=[UIColor colorWithRed:208/255.0 green:34/255.0 blue:45/255.0 alpha:1.0];
     NSString*isfloatzero;
+    
+    NSString*check=[str substringToIndex: 2];
+    NSString*strs=[check substringFromIndex:1];
     if ([[str substringToIndex:1] isEqualToString:@"$"])
     {
   
@@ -295,6 +298,12 @@
         
         NSString *qlwUnitsPlainText = [NSString stringWithFormat:@"%@",str];
         _product_price.attributedText=[Validation plainStringToAttributedUnits:qlwUnitsPlainText:@"F"];
+    }
+    else if ([strs isEqualToString:@"/"])
+    {
+  
+         NSString *qlwUnitsPlainText = [NSString stringWithFormat:@"%@",str];
+        _product_price.attributedText=[Validation plainStringToAttributedUnits:qlwUnitsPlainText:@"/"];
     }
     else
     {

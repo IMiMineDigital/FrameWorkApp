@@ -158,8 +158,11 @@
   
   
 }
-
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.dataload.backgroundColor = [UIColor whiteColor];
+}
 -(IBAction)backbtn:(id)sender
 {
  [self.navigationController popViewControllerAnimated:YES];

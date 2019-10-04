@@ -37,22 +37,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define isiPhoneXsMax               [UIScreen mainScreen].bounds.size.height == 896
 
-
+#define isiPhoneXR              [UIScreen mainScreen].bounds.size.height == 828
 
 #define TOAST_CENTER @"CSToastPositionCenter"
 #define TOAST_BOTTOM @"CSToastPositionBottom"
 #define TOAST_TIMEOUT 2.0
 
 #define USERDATA @"UseInformation"
-#define ACCESS_TOKEN @"Access_Token"
+//#define ACCESS_TOKEN @"https://platformapi.immdemo.net/api/v1/Access_Token"
+//#define GLOBAL_URL @""
 
-//#define GLOBAL_URL @"https://fwstaging.immdemo.net/api/"
-//
-//
-//
 //#define LOGIN_URL @"v1/Account/Login"
 //#define ACCESSTOKEN_URL   @"api/v1/Token"
-//
+
 //#define PRINTURL_URL @"https://fwstaging.immdemo.net/web/printshoppinglist.aspx?"
 //#define RESEND_URL @"https://fwstagingapi.immdemo.net/api/v1/Account/ResetPassword?"
 //#define CIRCULAR_URL @"https://fwstagingapi.immdemo.net/api/v1/Circular/Offers?"
@@ -85,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-
+#define ACCESS_TOKEN @"https://fwstaging.immdemo.net/api/Access_Token"
 
 #define PRINTURL_URL @"https://fwstaging.immdemo.net/web/printshoppinglist.aspx?"
 #define RESEND_URL @"https://fwstagingapi.immdemo.net/api/v1/Account/ResetPassword?"
@@ -119,10 +116,12 @@ NS_ASSUME_NONNULL_BEGIN
 #define kErrorMessageAudioRecordingFailed   @"Unable to start Audio recording due to failure in Recording Engine"
 #define SHOPPINGLISTDETAILS_URL @"https://fwstagingapi.immdemo.net/api/v1/Circular/ItemDetails?"
 
+//#define GET_INFORMATION_URL  @"https://platformapi.immdemo.net/api/v1/Account/SaveLogLogin?"
+
+#define GET_INFORMATION_URL  @"https://fwstagingapi.immdemo.net/api/v1/Account/SaveLogLogin?"
 
 
-
-
+//#define GET_INFORMATION_URL @"https://platformapi.immdemo.net/api/v1/Account/SaveLogLogin?FileName=LoginLog|Email=kprajapati@epsilonium.com|Password=anshuman|Plateform=3|OperatingSystem=IOS|OSVersion=12.20|Browser=0|BrowserVersion=0|Lattitude=0.000000|Longitude=0.000000|IPAddress=192.168.2.29|EntryDate=20-08-2019"
 @end
 
 NS_ASSUME_NONNULL_END

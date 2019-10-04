@@ -28,6 +28,8 @@
       NSInteger togleindxbtn;
       NSInteger selectindex;
     
+    BOOL checkedAll;
+    
        NSMutableArray*ActivatedsortingArry;
 }
 @end
@@ -266,6 +268,12 @@
    _shoppingFilterView=[self.delegate hideview:_shoppingFilterView];
     [self Activatedlist];
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.soppingTable.backgroundColor = [UIColor whiteColor];
+    self.activatedOffersTable.backgroundColor = [UIColor whiteColor];
+    
+}
 -(BOOL)textFieldShouldReturn:(UITextField*)textField
 {
    if (textField == self.EmailTextField)
@@ -485,27 +493,24 @@
                 
                 
 
-        for (int i=0; i<[_CirCouponseidChecked count]; i++)
-        {
-            
-            
-            
+//        for (int i=0; i<[_CirCouponseidChecked count]; i++)
+//        {
 
-                if ([strDict[@"CouponID"] integerValue]==[_CirCouponseidChecked[i][@"CouponID"] integerValue])
-                {
-                    
-                        NSLog(@"strDict:%@",strDict[@"CouponID"]);
-                          NSLog(@"_CirCouponseidChecked:%@",_CirCouponseidChecked[i][@"CouponID"]);
-                    
-                          NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[_CirCouponseidChecked objectAtIndex:i]];
-                          [Cir_Dicts setObject:[NSString stringWithFormat:@"%d",counts] forKey:@"Quantity"];
-                          [_CirCouponseidChecked replaceObjectAtIndex:i withObject:Cir_Dicts];
-                    
-                    
-
-                 }
-
-        }
+//                if ([strDict[@"CouponID"] integerValue]==[_CirCouponseidChecked[i][@"CouponID"] integerValue])
+//                {
+//
+//                        NSLog(@"strDict:%@",strDict[@"CouponID"]);
+//                          NSLog(@"_CirCouponseidChecked:%@",_CirCouponseidChecked[i][@"CouponID"]);
+//
+//                          NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[_CirCouponseidChecked objectAtIndex:i]];
+//                          [Cir_Dicts setObject:[NSString stringWithFormat:@"%d",counts] forKey:@"Quantity"];
+//                          [_CirCouponseidChecked replaceObjectAtIndex:i withObject:Cir_Dicts];
+//
+//
+//
+//                 }
+//
+//        }
 
                 
           }
@@ -532,7 +537,7 @@
             NSLog(@"jsonresonse:%@",jsonresonse);
             if ([[jsonresonse valueForKey:@"errorcode"] integerValue]==0)
             {
-                [self.delegate shoppingToCircularUpdateqty:strDict];
+                //[self.delegate shoppingToCircularUpdateqty:strDict];
                 [self.delegate shoppingToCircularUpdateTotalqtyadd:strDict];
                 [UIView setAnimationsEnabled:NO];
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
@@ -700,32 +705,23 @@
                  [self subproducts:upc quantity:quantity index:index];
                 
                 
-                for (int i=0; i<[_CirCouponseidChecked count]; i++)
-                {
-                    
-                    
-                    
-                    
-                    if ([strDict[@"CouponID"] integerValue]==[_CirCouponseidChecked[i][@"CouponID"] integerValue])
-                    {
-                        
-                        NSLog(@"strDict:%@",strDict[@"CouponID"]);
-                        NSLog(@"_CirCouponseidChecked:%@",_CirCouponseidChecked[i][@"CouponID"]);
-                        
-                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[_CirCouponseidChecked objectAtIndex:i]];
-                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%d",count] forKey:@"Quantity"];
-                        [_CirCouponseidChecked replaceObjectAtIndex:i withObject:Cir_Dicts];
-                        
-                        
-                        
-                    }
-                    
-                }
+//                for (int i=0; i<[_CirCouponseidChecked count]; i++)
+//                {
+//
+//                   if ([strDict[@"CouponID"] integerValue]==[_CirCouponseidChecked[i][@"CouponID"] integerValue])
+//                    {
+//                       NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[_CirCouponseidChecked objectAtIndex:i]];
+//                        [Cir_Dicts setObject:[NSString stringWithFormat:@"%d",count] forKey:@"Quantity"];
+//                        [_CirCouponseidChecked replaceObjectAtIndex:i withObject:Cir_Dicts];
+//
+//                     }
+//
+//                }
                 
                 
                 
             }
-            [self.delegate shoppingToCircularUpdateqty:strDict];
+            //[self.delegate shoppingToCircularUpdateqty:strDict];
             [self.delegate shoppingToCircularUpdateTotalqtysub:strDict];
     }
 }
@@ -876,8 +872,12 @@
     }
     else
     {
+        if (checkedAll==true)
+        {
+               checkedAll=false;
+              [self.delegate shoppingTocircularAllDelete];
+        }
          [self.delegate backCircularpageForShoppinglist];
-        //[self.delegate AddMypersonalPriceController];
     }
   
     
@@ -1134,36 +1134,8 @@
                 }
                 else
                 {
-                    
-                    
-                    [self.delegate Deleteshoppinglist:dict];
-                    
-                    for (int i=0; i<[_CirCouponseidChecked count]; i++)
-                    {
-                        if ([soppinglist[sender.tag][@"PrimaryOfferTypeId"]integerValue]==2 || [soppinglist[sender.tag][@"PrimaryOfferTypeId"]integerValue]==3)
-                        {
-                            if([_CirCouponseidChecked[i][@"CouponID"]integerValue]==[soppinglist[sender.tag][@"CouponID"]integerValue])
-                            {
-                                NSMutableDictionary*dicts=[[NSMutableDictionary alloc] initWithDictionary:_CirCouponseidChecked[i]];
-                                [dicts setObject:@"0" forKey:@"Quantity"];
-                                [_CirCouponseidChecked replaceObjectAtIndex:i withObject:dicts];
-                                
-                            }
-                        }
-                        else if ([soppinglist[sender.tag][@"PrimaryOfferTypeId"]integerValue]==1)
-                        {
-                            if ([_CirCouponseidChecked[i][@"UPC"]integerValue]==[soppinglist[sender.tag][@"UPC"]integerValue])
-                            {
-                                NSMutableDictionary*dicts=[[NSMutableDictionary alloc] initWithDictionary:_CirCouponseidChecked[i]];
-                                [dicts setObject:@"0" forKey:@"Quantity"];
-                                [_CirCouponseidChecked replaceObjectAtIndex:i withObject:dicts];
-                                
-                            }
-                        }
-                        
-                        
-                        
-                    }
+                    //[self.delegate Deleteshoppinglist:dict];
+                    [self.delegate shoppingTocircularindexdataClear:soppinglist[sender.tag]];
                 }
             }
             
@@ -1289,6 +1261,7 @@
     
     if (soppinglist.count>0 || ActivatedOffersArray.count>0)
     {
+
          _EmailView.hidden=YES;
           _cancelView.hidden=YES;
          [self AlertviewcontrollerAllDeleteShoppingList];
@@ -1340,6 +1313,8 @@
 -(void)AlldeleteShoppingListcheckdate
 {
     
+         checkedAll=true;
+    
     // _AdditemsView.hidden=YES;
     if ([[Reachability reachabilityForInternetConnection]currentReachabilityStatus]==NotReachable)
     {
@@ -1385,16 +1360,13 @@
                        [ActivatedOffersArray removeAllObjects];
                        [self shoppinglist];
                       [self Activatedlist];
-              [self.delegate UpdateCircularForShopping];
-                       // [self.delegate Deleteshoppinglist];
+                    //[self.delegate UpdateCircularForShopping];
+                      [self.delegate shoppingTocircularAllDelete];
                    
                 }
                 
             }
-     
- 
-        
-    }
+   }
     
 }
 -(void)AddOwnItemsAllRemove
@@ -1493,7 +1465,7 @@ NSIndexPath *indexrPath;
 {
 
     
-       NSString*str=[NSString stringWithFormat:@"%@",dict[@"Quantity"]];
+    //   NSString*str=[NSString stringWithFormat:@"%@",dict[@"Quantity"]];
  
 //    if (soppinglist.count>0)
 //    {
@@ -1502,41 +1474,41 @@ NSIndexPath *indexrPath;
 //        {
         
         
-            NSMutableDictionary*Actdicts=[[NSMutableDictionary alloc] initWithDictionary:ActivatedOffersArray[selectindex]];
-            [Actdicts setObject:str forKey:@"Quantity"];
-            [ActivatedOffersArray replaceObjectAtIndex:selectindex withObject:Actdicts];
-            [_activatedOffersTable reloadData];
-            NSIndexPath *indexPaths = [NSIndexPath indexPathForRow:selectindex inSection:0];
-            [_activatedOffersTable scrollToRowAtIndexPath:indexPaths
-                                         atScrollPosition:UITableViewScrollPositionNone
-                                                 animated:NO];
+//            NSMutableDictionary*Actdicts=[[NSMutableDictionary alloc] initWithDictionary:ActivatedOffersArray[selectindex]];
+//           // [Actdicts setObject:str forKey:@"Quantity"];
+//            [ActivatedOffersArray replaceObjectAtIndex:selectindex withObject:Actdicts];
+//            [_activatedOffersTable reloadData];
+//            NSIndexPath *indexPaths = [NSIndexPath indexPathForRow:selectindex inSection:0];
+//            [_activatedOffersTable scrollToRowAtIndexPath:indexPaths
+//                                         atScrollPosition:UITableViewScrollPositionNone
+//                                                 animated:NO];
+    
         
         
-        
-        [self.delegate shoppingToCircularUpdateqty:dict];
+        //[self.delegate shoppingToCircularUpdateqty:dict];
             
-       for (int i=0; i<[_CirCouponseidChecked count]; i++)
-            {
-                if ([dict[@"PrimaryOfferTypeId"] integerValue]==2 ||[dict[@"PrimaryOfferTypeId"] integerValue]==3)
-                {
-                    if ([dict[@"CouponID"] integerValue]==[_CirCouponseidChecked[i][@"CouponID"] integerValue])
-                    {
-                       NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[_CirCouponseidChecked                               objectAtIndex:i]];
-                        [Cir_Dicts setObject:str forKey:@"Quantity"];
-                        [_CirCouponseidChecked replaceObjectAtIndex:i withObject:Cir_Dicts];
-                    }
-                }
-                else
-                {
-                    if ([dict[@"UPC"] integerValue]==[_CirCouponseidChecked[i][@"UPC"] integerValue])
-                    {
-                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[_CirCouponseidChecked objectAtIndex:i]];
-                        [Cir_Dicts setObject:str forKey:@"Quantity"];
-                        [_CirCouponseidChecked replaceObjectAtIndex:i withObject:Cir_Dicts];
-                    }
-
-                }
-            }
+//       for (int i=0; i<[_CirCouponseidChecked count]; i++)
+//            {
+//                if ([dict[@"PrimaryOfferTypeId"] integerValue]==2 ||[dict[@"PrimaryOfferTypeId"] integerValue]==3)
+//                {
+//                    if ([dict[@"CouponID"] integerValue]==[_CirCouponseidChecked[i][@"CouponID"] integerValue])
+//                    {
+//                       NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[_CirCouponseidChecked                               objectAtIndex:i]];
+//                       // [Cir_Dicts setObject:str forKey:@"Quantity"];
+//                        [_CirCouponseidChecked replaceObjectAtIndex:i withObject:Cir_Dicts];
+//                    }
+//                }
+//                else
+//                {
+//                    if ([dict[@"UPC"] integerValue]==[_CirCouponseidChecked[i][@"UPC"] integerValue])
+//                    {
+//                        NSMutableDictionary *Cir_Dicts = [[NSMutableDictionary alloc] initWithDictionary:[_CirCouponseidChecked objectAtIndex:i]];
+//                       // [Cir_Dicts setObject:str forKey:@"Quantity"];
+//                        [_CirCouponseidChecked replaceObjectAtIndex:i withObject:Cir_Dicts];
+//                    }
+//
+//                }
+//            }
     
     
 //       }

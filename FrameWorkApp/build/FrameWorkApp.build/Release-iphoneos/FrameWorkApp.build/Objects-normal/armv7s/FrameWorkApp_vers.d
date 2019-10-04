@@ -1,0 +1,2 @@
+dependencies: \
+  /Users/kamleshprajapati/Desktop/Abrar/30\ Sep\ 2019/App/FrameWorkApp/build/FrameWorkApp.build/Release-iphoneos/FrameWorkApp.build/DerivedSources/FrameWorkApp_vers.c

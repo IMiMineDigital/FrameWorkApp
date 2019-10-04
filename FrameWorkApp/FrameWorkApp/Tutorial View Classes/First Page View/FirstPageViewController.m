@@ -24,9 +24,13 @@
 }
 
 - (void)didReceiveMemoryWarning
-{ [super didReceiveMemoryWarning];
- 
-    
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 @end

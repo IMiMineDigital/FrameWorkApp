@@ -6,6 +6,21 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		23E6545922A7CFE800C6377C /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 23E6545A22A7CFE800C6377C /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				23E6545F22A7D03100C6377C /* ShellScript */,
+			);
+			dependencies = (
+				23E6545E22A7D02F00C6377C /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		230EC8142296CC1A0018FB83 /* ApiHendlerClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 236EB7DE21E8AB31001C72A5 /* ApiHendlerClass.m */; };
 		231629712241FEA800BF654F /* ChangesStrFile.strings in Resources */ = {isa = PBXBuildFile; fileRef = 231629702241FEA800BF654F /* ChangesStrFile.strings */; };
@@ -35,24 +50,24 @@
 		232E818021DE431500CCADF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232E817F21DE431400CCADF0 /* Assets.xcassets */; };
 		2339354421D1044D001C0FBC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2339351E21D1044D001C0FBC /* README.md */; };
 		2339354521D1044D001C0FBC /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2339352021D1044D001C0FBC /* UIProgressView+AFNetworking.m */; };
-		2339354621D1044D001C0FBC /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352121D1044D001C0FBC /* UIButton+AFNetworking.h */; };
+		2339354621D1044D001C0FBC /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352121D1044D001C0FBC /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2339354721D1044D001C0FBC /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2339352221D1044D001C0FBC /* UIRefreshControl+AFNetworking.m */; };
-		2339354821D1044D001C0FBC /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352321D1044D001C0FBC /* UIImageView+AFNetworking.h */; };
-		2339354921D1044D001C0FBC /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352421D1044D001C0FBC /* AFImageDownloader.h */; };
+		2339354821D1044D001C0FBC /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352321D1044D001C0FBC /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2339354921D1044D001C0FBC /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352421D1044D001C0FBC /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2339354A21D1044D001C0FBC /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2339352521D1044D001C0FBC /* AFNetworkActivityIndicatorManager.m */; };
-		2339354B21D1044D001C0FBC /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352621D1044D001C0FBC /* AFAutoPurgingImageCache.h */; };
-		2339354C21D1044D001C0FBC /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352721D1044D001C0FBC /* UIWebView+AFNetworking.h */; };
-		2339354D21D1044D001C0FBC /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352821D1044D001C0FBC /* UIActivityIndicatorView+AFNetworking.h */; };
-		2339354E21D1044D001C0FBC /* UIImage+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352921D1044D001C0FBC /* UIImage+AFNetworking.h */; };
-		2339354F21D1044D001C0FBC /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352A21D1044D001C0FBC /* UIProgressView+AFNetworking.h */; };
+		2339354B21D1044D001C0FBC /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352621D1044D001C0FBC /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2339354C21D1044D001C0FBC /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352721D1044D001C0FBC /* UIWebView+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2339354D21D1044D001C0FBC /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352821D1044D001C0FBC /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2339354E21D1044D001C0FBC /* UIImage+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352921D1044D001C0FBC /* UIImage+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2339354F21D1044D001C0FBC /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352A21D1044D001C0FBC /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2339355021D1044D001C0FBC /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2339352B21D1044D001C0FBC /* UIImageView+AFNetworking.m */; };
-		2339355121D1044D001C0FBC /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352C21D1044D001C0FBC /* UIKit+AFNetworking.h */; };
-		2339355221D1044E001C0FBC /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352D21D1044D001C0FBC /* UIRefreshControl+AFNetworking.h */; };
+		2339355121D1044D001C0FBC /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352C21D1044D001C0FBC /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		2339355221D1044E001C0FBC /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339352D21D1044D001C0FBC /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2339355321D1044E001C0FBC /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2339352E21D1044D001C0FBC /* UIButton+AFNetworking.m */; };
 		2339355421D1044E001C0FBC /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2339352F21D1044D001C0FBC /* UIActivityIndicatorView+AFNetworking.m */; };
 		2339355521D1044E001C0FBC /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2339353021D1044D001C0FBC /* UIWebView+AFNetworking.m */; };
 		2339355621D1044E001C0FBC /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2339353121D1044D001C0FBC /* AFAutoPurgingImageCache.m */; };
-		2339355721D1044E001C0FBC /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339353221D1044D001C0FBC /* AFNetworkActivityIndicatorManager.h */; };
+		2339355721D1044E001C0FBC /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339353221D1044D001C0FBC /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2339355821D1044E001C0FBC /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2339353321D1044D001C0FBC /* AFImageDownloader.m */; };
 		2339355921D1044E001C0FBC /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339353521D1044D001C0FBC /* AFSecurityPolicy.h */; };
 		2339355A21D1044E001C0FBC /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2339353621D1044D001C0FBC /* AFNetworkReachabilityManager.h */; };
@@ -72,10 +87,10 @@
 		2339356E21D10B09001C0FBC /* MainX.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2339356D21D10B09001C0FBC /* MainX.storyboard */; };
 		234522D322E5CA1700FA931C /* search1.png in Resources */ = {isa = PBXBuildFile; fileRef = 234522D222E5CA1400FA931C /* search1.png */; };
 		23470E73227981B800459ECC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23AE17FA21D350DD0054ECBC /* CoreGraphics.framework */; };
-		2355245C2280077F006204F2 /* SingleViewCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 235524592280077F006204F2 /* SingleViewCollectionCell.h */; };
+		2355245C2280077F006204F2 /* SingleViewCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 235524592280077F006204F2 /* SingleViewCollectionCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2355245D2280077F006204F2 /* SingleViewCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2355245A2280077F006204F2 /* SingleViewCollectionCell.m */; };
 		2355245E2280077F006204F2 /* SingleViewCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2355245B2280077F006204F2 /* SingleViewCollectionCell.xib */; };
-		23552463228007C2006204F2 /* DoubleViewCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 23552460228007C2006204F2 /* DoubleViewCollectionCell.h */; };
+		23552463228007C2006204F2 /* DoubleViewCollectionCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 23552460228007C2006204F2 /* DoubleViewCollectionCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		23552464228007C2006204F2 /* DoubleViewCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23552461228007C2006204F2 /* DoubleViewCollectionCell.m */; };
 		23552465228007C2006204F2 /* DoubleViewCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23552462228007C2006204F2 /* DoubleViewCollectionCell.xib */; };
 		2355F69222CA14220041C730 /* personal-circular.png in Resources */ = {isa = PBXBuildFile; fileRef = 2355F69122CA14210041C730 /* personal-circular.png */; };
@@ -137,7 +152,7 @@
 		23A9A5F322E45DE000998000 /* AdditionalOffers.h in Headers */ = {isa = PBXBuildFile; fileRef = 23A9A5F022E45DE000998000 /* AdditionalOffers.h */; };
 		23A9A5F422E45DE000998000 /* AdditionalOffers.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A9A5F122E45DE000998000 /* AdditionalOffers.m */; };
 		23A9A5F522E45DE000998000 /* AdditionalOffers.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A9A5F222E45DE000998000 /* AdditionalOffers.xib */; };
-		23AD6D6621C8B89100B23711 /* HomeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 23AD6D6421C8B89100B23711 /* HomeViewController.h */; };
+		23AD6D6621C8B89100B23711 /* HomeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 23AD6D6421C8B89100B23711 /* HomeViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		23AD6D6721C8B89100B23711 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AD6D6521C8B89100B23711 /* HomeViewController.m */; };
 		23AD6D7D21C8BC0400B23711 /* FrameWorkApp.h in Sources */ = {isa = PBXBuildFile; fileRef = 2324F07721C7773F008BDA2A /* FrameWorkApp.h */; };
 		23AD6D7E21C8BC0400B23711 /* ObjectType.h in Sources */ = {isa = PBXBuildFile; fileRef = 2324F09221C77767008BDA2A /* ObjectType.h */; };
@@ -153,6 +168,7 @@
 		23AE89902285920200A021D7 /* PurchaseHistoryDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AE898E2285920200A021D7 /* PurchaseHistoryDetailsViewController.m */; };
 		23B33EAB232BB98C00998EE7 /* addpin-ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B33EAA232BB98C00998EE7 /* addpin-ico.png */; };
 		23B38A8D21EDDD6C00F0C7AC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F7F18621ECC4A300692774 /* Reachability.m */; };
+		23BD447D23334D5D00A8C256 /* locationi.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BD447C23334D5D00A8C256 /* locationi.png */; };
 		23BD505922E84CDC008CCEFE /* addRelated.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23BD505822E84CDC008CCEFE /* addRelated.jpg */; };
 		23C25AB222A8E14C00C2AE46 /* UIView+Toast.h in Headers */ = {isa = PBXBuildFile; fileRef = 23C25AAE22A8E14A00C2AE46 /* UIView+Toast.h */; };
 		23C25AB322A8E14C00C2AE46 /* UIImage+animatedGIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 23C25AAF22A8E14B00C2AE46 /* UIImage+animatedGIF.h */; };
@@ -178,11 +194,21 @@
 		23DBB60522214C4F000709E4 /* FirstPageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 23DBB5F922214C4E000709E4 /* FirstPageViewController.h */; };
 		23DBB60622214C4F000709E4 /* FirstPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23DBB5FA22214C4E000709E4 /* FirstPageViewController.xib */; };
 		23DCB71A22E199AA000705D4 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DCB71822E199AA000705D4 /* libxml2.2.tbd */; };
-		23F15D6F21CB914700C23F28 /* MyPersonalPriceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 23F15D6D21CB914700C23F28 /* MyPersonalPriceViewController.h */; };
+		23F15D6F21CB914700C23F28 /* MyPersonalPriceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 23F15D6D21CB914700C23F28 /* MyPersonalPriceViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		23F15D7021CB914700C23F28 /* MyPersonalPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F15D6E21CB914700C23F28 /* MyPersonalPriceViewController.m */; };
 		23F15D7D21CB982900C23F28 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F15D7C21CB982900C23F28 /* AVFoundation.framework */; };
 		23F7F17A21ECC39700692774 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F7F17921ECC39700692774 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		23E6545D22A7D02F00C6377C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2324F06B21C7773F008BDA2A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2324F07321C7773F008BDA2A;
+			remoteInfo = FrameWorkApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		231629702241FEA800BF654F /* ChangesStrFile.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = ChangesStrFile.strings; sourceTree = "<group>"; };
@@ -333,6 +359,7 @@
 		23AE898D2285920200A021D7 /* PurchaseHistoryDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseHistoryDetailsViewController.h; sourceTree = "<group>"; };
 		23AE898E2285920200A021D7 /* PurchaseHistoryDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseHistoryDetailsViewController.m; sourceTree = "<group>"; };
 		23B33EAA232BB98C00998EE7 /* addpin-ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addpin-ico.png"; sourceTree = "<group>"; };
+		23BD447C23334D5D00A8C256 /* locationi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationi.png; sourceTree = "<group>"; };
 		23BD505822E84CDC008CCEFE /* addRelated.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addRelated.jpg; sourceTree = "<group>"; };
 		23C25AAE22A8E14A00C2AE46 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		23C25AAF22A8E14B00C2AE46 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
@@ -675,6 +702,7 @@
 				23BD505822E84CDC008CCEFE /* addRelated.jpg */,
 				23A937C622BB82930049C273 /* add.png */,
 				23B33EAA232BB98C00998EE7 /* addpin-ico.png */,
+				23BD447C23334D5D00A8C256 /* locationi.png */,
 				23A937C722BB82930049C273 /* GEnoimage.jpg */,
 				23A937C922BB82930049C273 /* checkmar.png */,
 				23A937CA22BB82930049C273 /* icons.png */,
@@ -918,7 +946,6 @@
 				2324F07021C7773F008BDA2A /* Sources */,
 				2324F07121C7773F008BDA2A /* Frameworks */,
 				2324F07221C7773F008BDA2A /* Resources */,
-				230DA9692338F0550066119D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -943,6 +970,9 @@
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
 					};
+					23E6545922A7CFE800C6377C = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 2324F06E21C7773F008BDA2A /* Build configuration list for PBXProject "FrameWorkApp" */;
@@ -958,6 +988,7 @@
 			projectRoot = "";
 			targets = (
 				2324F07321C7773F008BDA2A /* FrameWorkApp */,
+				23E6545922A7CFE800C6377C /* Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -992,6 +1023,7 @@
 				239A91AF22D33ECF006CB24A /* ActivatedOffersCell.xib in Resources */,
 				23A70C4622E31C4500C07810 /* FooterCell.xib in Resources */,
 				23AE898A2285918900A021D7 /* PurchasesHistoryDetailsCell.xib in Resources */,
+				23BD447D23334D5D00A8C256 /* locationi.png in Resources */,
 				23A107BD22BCC4E0009DAFFA /* logo.jpg in Resources */,
 				236DECAF2225086200BD1D53 /* FourthPageViewControllerXipad.xib in Resources */,
 				2339356C21D10AFE001C0FBC /* Main8.storyboard in Resources */,
@@ -1024,7 +1056,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		230DA9692338F0550066119D /* ShellScript */ = {
+		23E6545F22A7D03100C6377C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1039,7 +1071,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n# Make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n# Next, work out if we're in SIM or DEVICE\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nBUILD_PRODUCTS=\"${SYMROOT}/../../../../Products\"\ncp -R \"${BUILD_PRODUCTS}/Debug-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_PRODUCTS}/Debug-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\nfi\n";
+			shellScript = "UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n# Make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n# Next, work out if we're in SIM or DEVICE\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nBUILD_PRODUCTS=\"${SYMROOT}/../../../../Products\"\ncp -R \"${BUILD_PRODUCTS}/Debug-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_PRODUCTS}/Debug-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1110,6 +1142,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		23E6545E22A7D02F00C6377C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2324F07321C7773F008BDA2A /* FrameWorkApp */;
+			targetProxy = 23E6545D22A7D02F00C6377C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		2324F08621C7773F008BDA2A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1175,7 +1215,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1328,6 +1368,24 @@
 			};
 			name = Release;
 		};
+		23E6545B22A7CFE800C6377C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		23E6545C22A7CFE800C6377C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1345,6 +1403,15 @@
 			buildConfigurations = (
 				2324F08921C7773F008BDA2A /* Debug */,
 				2324F08A21C7773F008BDA2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23E6545A22A7CFE800C6377C /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23E6545B22A7CFE800C6377C /* Debug */,
+				23E6545C22A7CFE800C6377C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

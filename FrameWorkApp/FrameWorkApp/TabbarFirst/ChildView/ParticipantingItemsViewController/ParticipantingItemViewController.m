@@ -271,6 +271,12 @@
          _Activateview.hidden=NO;
     }
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
 - (void) tapped
 {
     [self.view endEditing:YES];

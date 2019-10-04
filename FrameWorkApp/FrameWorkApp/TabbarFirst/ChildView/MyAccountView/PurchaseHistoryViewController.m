@@ -114,6 +114,11 @@
     });
 
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+    //self.historytable.backgroundColor = [UIColor whiteColor];
+}
 -(void)didReceiveMemoryWarning{
     
 //    [historyarray removeAllObjects];

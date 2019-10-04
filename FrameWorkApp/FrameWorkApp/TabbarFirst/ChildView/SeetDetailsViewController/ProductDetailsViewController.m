@@ -72,10 +72,8 @@
             
             if (_circheckedcouponseArry[i][@"CouponID"]==_shoppingListdata[@"Couponid"])
             {
-
-
-                   _data=(NSMutableDictionary*)_circheckedcouponseArry[i];
-                    flg=2;
+                    _data=(NSMutableDictionary*)_circheckedcouponseArry[i];
+                     flg=2;
             }
 
 
@@ -112,7 +110,7 @@
                     if (responseData!=nil)
                     {
                         NSMutableArray *jsonObject= [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-                       // NSLog(@"jsonObject:%@",jsonObject);
+                         //NSLog(@"ShoppinglistApiDetails:%@",jsonObject);
                         [SVProgressHUD dismissWithDelay:1.0];
                         if (jsonObject.count!=0)
                         {
@@ -437,7 +435,7 @@
     {
          [self isDetailsShowingFun];
     }
-    
+    [_addbtn addTarget:self action:@selector(addbtn:) forControlEvents:UIControlEventTouchUpInside];
       [Validation setRoundView:self.activebtncolor borderWidth:0 borderColor:nil radius:_activebtncolor.layer.frame.size.height/2];
       [Validation addShadowToView:_headerView];
       [Validation addShadowToViewwhite:self.Activateview];
@@ -451,15 +449,21 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
 -(void)handleImageTap:(UITapGestureRecognizer*)gestureRecognizer
 {
       [self.view endEditing:YES];
 //     _addtolistview.hidden=YES;
 //     _AdditemsBtn.hidden=NO;
 //     _additemsplus.hidden=NO;
-    _addtolistview.hidden=NO;
-    _AdditemsBtn.hidden=NO;
-    _additemsplus.hidden=NO;
+    
+//        _addtolistview.hidden=NO;
+//        _AdditemsBtn.hidden=NO;
+//        _additemsplus.hidden=NO;
 }
 -(void)isDetailsShowingFun
 {
@@ -651,6 +655,8 @@
     
     _productprice.textColor=[UIColor colorWithRed:208/255.0 green:34/255.0 blue:45/255.0 alpha:1.0];
     NSString*isfloatzero;
+    NSString*check=[str substringToIndex: 2];
+    NSString*strs=[check substringFromIndex:1];
     if ([[str substringToIndex:1] isEqualToString:@"$"])
     {
     
@@ -688,6 +694,13 @@
         NSString *qlwUnitsPlainText = [NSString stringWithFormat:@"%@",str];
         _productprice.attributedText=[Validation plainStringToAttributedUnitsDeatilspage:qlwUnitsPlainText:@"F"];
     }
+    else if ([strs isEqualToString:@"/"])
+    {
+        NSLog(@"/strs");
+        NSString *qlwUnitsPlainText = [NSString stringWithFormat:@"%@",str];
+        _productprice.attributedText=[Validation plainStringToAttributedUnitsDeatilspage:qlwUnitsPlainText:@"/"];
+    }
+    
     else
     {
         _productprice.text=[NSString stringWithFormat:@"%@",str];
@@ -919,30 +932,25 @@
     }
     else if ([_data[@"RewardType"] integerValue]!=3 && [AdPrice floatValue]==0.0000)
     {
-//                _Regular_priceTitle.text=@"UPC:";
-//                _Regular_price2.text=[NSString stringWithFormat:@"%@",_data[@"UPC"]];
-//                _labTitle2.text=@"Limit";
-//                _lab2.text=[NSString stringWithFormat:@"%@",_data[@"LimitPerTransection"]];
-//                _labTitle3.text=@"Valid Through:";
-//                [self showValidthrough:_lab3];
-//                 [self RelateditemsShowing:_view3 hideview:_view4];
+                _Regular_priceTitle.text=@"UPC:";
+                _Regular_price2.text=[NSString stringWithFormat:@"%@",_data[@"UPC"]];
+                _labTitle2.text=@"Limit";
+                _lab2.text=[NSString stringWithFormat:@"%@",_data[@"LimitPerTransection"]];
+                _labTitle3.text=@"Valid Through:";
+                [self showValidthrough:_lab3];
+               [self RelateditemsShowing:_view3 hideview:_view4];
         
         
 //        _Regular_priceTitle.text=@"UPC:";
 //        _Regular_price2.text=[NSString stringWithFormat:@"%@",_data[@"UPC"]];
-        
-        
-        
-        
-        _Regular_priceTitle.text=@"Limit:";
-        _Regular_price2.text=[NSString stringWithFormat:@"%@",_data[@"LimitPerTransection"]];
-        _labTitle2.text=@"Valid Through:";
-        [self showValidthrough:_lab2];
-        
-        [self RelateditemsShowing:_view2 hideview:_view3];
-        
-                     _labTitle3.hidden=YES;
-                       _lab3.hidden=YES;
+      
+//        _Regular_priceTitle.text=@"Limit:";
+//        _Regular_price2.text=[NSString stringWithFormat:@"%@",_data[@"LimitPerTransection"]];
+//        _labTitle2.text=@"Valid Through:";
+//        [self showValidthrough:_lab2];
+       // [self RelateditemsShowing:_view2 hideview:_view3];
+//                     _labTitle3.hidden=YES;
+//                       _lab3.hidden=YES;
         
         
         
@@ -995,8 +1003,8 @@
     
       float CouponDiscount = [_data[@"CouponDiscount"] floatValue];
     
-    _labTitle3.text=@"Coupon Value:";
-    _lab3.text=[NSString stringWithFormat:@"$%.02f",CouponDiscount];
+       _labTitle3.text=@"Coupon Value:";
+       _lab3.text=[NSString stringWithFormat:@"$%.02f",CouponDiscount];
     
     
     float myNumber = [_data[@"Savings"] floatValue];
@@ -1017,11 +1025,11 @@
         _lab6.text=[NSString stringWithFormat:@"%@",_data[@"LimitPerTransection"]];
     }
     
-    _labTitle7.text=@"Valid Through:";
-     [self showValidthrough:_lab7];
+        _labTitle7.text=@"Valid Through:";
+         [self showValidthrough:_lab7];
 
-      [self RelateditemsShowing:_view7 hideview:_view8];
-     _view8.hidden=YES;
+          [self RelateditemsShowing:_view7 hideview:_view8];
+         _view8.hidden=YES;
  
     
 }
@@ -1042,12 +1050,11 @@
 //                                   userInfo:nil
 //                                    repeats:NO];
     
-    
+   
     
           dispatch_async(dispatch_get_main_queue(), ^{
             [self addproductfun];
             });
-    
   
 }
 -(void)shoppingViewListApi
@@ -1400,59 +1407,45 @@
 
 -(void)DetailToRelatedsAddqty:(NSMutableDictionary*)dict
 {
-    
-    
-    [self.delegate BackActivateFuc:dict backdatadict:_data];
+   [self.delegate BackActivateFuc:dict backdatadict:_data];
 }
-
-
 //Circular-Related-deatips to updated circular
 -(void)DetailsToRelatedTotalQtyAdd:(NSMutableDictionary*)Redata
 {
-    
   [self.delegate AddRelatedCountToatalQty:Redata];
 }
 -(void)detailsToRelatedTodetails:(NSMutableDictionary*)dict
 {
-    
-    
     [self removefuncheckedate];
     [self.delegate BackRemoveQuantity:dict];
     //[self.delegate BackRemoveQuantity:_data];
 }
-
-
-
-
-
 -(void)DetailsToRelatedTotalQtySub:(NSMutableDictionary*)Redata
 {
      [self.delegate SubRelatedCountToatalQty:Redata];
 }
 -(IBAction)backbtn:(id)sender
 {
-    
-    
-    if ([_comefrom isEqualToString:@"Cicular"])
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+        if ([_comefrom isEqualToString:@"Cicular"])
+        {
+             [self.navigationController popViewControllerAnimated:YES];
+        }
       else if ([_comefrom isEqualToString:@"ParticipantingDeatilsView"])
       {
-       [self.navigationController popViewControllerAnimated:YES];
+             [self.navigationController popViewControllerAnimated:YES];
       }
-  else if ([_comefrom isEqualToString:@"SoppingDeatils2"])
-  {
-      [self.navigationController popViewControllerAnimated:YES];
-  }
-    else if ([_comefrom isEqualToString:@"ParticipantingCircularView"])
-   {
-       [self.navigationController popToRootViewControllerAnimated:YES];
-   }
-   else
-    {
-      [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+      else if ([_comefrom isEqualToString:@"SoppingDeatils2"])
+      {
+             [self.navigationController popViewControllerAnimated:YES];
+      }
+        else if ([_comefrom isEqualToString:@"ParticipantingCircularView"])
+       {
+             [self.navigationController popToRootViewControllerAnimated:YES];
+       }
+        else
+        {
+             [self.navigationController popToRootViewControllerAnimated:YES];
+        }
 }
 
 -(IBAction)RelatedBtn:(UIButton*)sender

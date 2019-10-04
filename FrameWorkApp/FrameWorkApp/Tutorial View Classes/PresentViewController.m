@@ -39,6 +39,11 @@
     [self swipbtnTitleChange];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
 - (IBAction)onSkipBtn:(id)sender
 {
 //    [self.view removeFromSuperview];
@@ -88,7 +93,8 @@
          nav.navigationBarHidden=true;
          controller.isCheckController=NSLocalizedString(@"Personal Ad", @"");
          controller.delegate=self;
-         [self presentViewController:nav animated:YES completion:nil];
+        [[UIApplication sharedApplication].keyWindow setRootViewController:nav];
+         //[self presentViewController:nav animated:YES completion:nil];
     }
     else if ([_comefrom isEqualToString:NSLocalizedString(@"shoppingListPage", @"")])
     {
@@ -97,7 +103,8 @@
         controller.Checkback=@"FirstEnter";
          controller.isCheckfilter=@"FirstEnter";
         nav.navigationBarHidden=true;
-        [self presentViewController:nav animated:YES completion:nil];
+          [[UIApplication sharedApplication].keyWindow setRootViewController:nav];
+       // [self presentViewController:nav animated:YES completion:nil];
     }
     else if ([_comefrom isEqualToString:NSLocalizedString(@"PurcheaseHistoryPage", @"")])
     {
@@ -105,7 +112,8 @@
          controller.Checkback=@"FirstEnter";
         UINavigationController*nav=[[UINavigationController alloc] initWithRootViewController:controller];
         nav.navigationBarHidden=true;
-        [self presentViewController:nav animated:YES completion:nil];
+          [[UIApplication sharedApplication].keyWindow setRootViewController:nav];
+       // [self presentViewController:nav animated:YES completion:nil];
         
     }
  }
@@ -144,12 +152,14 @@
         contantView  = firstPageViewController.view;
     }
     else if(index == 1)
-    {SecondPageViewController *secondPageViewController = [[SecondPageViewController alloc] initWithNibName:[Validation getXibName:@"SecondPageViewController"] bundle:[NSBundle bundleForClass:SecondPageViewController.class]];
+    {
+        SecondPageViewController *secondPageViewController = [[SecondPageViewController alloc] initWithNibName:[Validation getXibName:@"SecondPageViewController"] bundle:[NSBundle bundleForClass:SecondPageViewController.class]];
         secondPageViewController.view.frame = CGRectMake(0, 0,secondPageViewController.view.frame.size.width , secondPageViewController.view.frame.size.height);
         contantView  = secondPageViewController.view;
     }
     else if(index == 2)
-    { ThirdPageViewController *thirdPageViewController = [[ThirdPageViewController alloc] initWithNibName:[Validation getXibName:@"ThirdPageViewController"] bundle:[NSBundle bundleForClass:ThirdPageViewController.class]];
+    {
+        ThirdPageViewController *thirdPageViewController = [[ThirdPageViewController alloc] initWithNibName:[Validation getXibName:@"ThirdPageViewController"] bundle:[NSBundle bundleForClass:ThirdPageViewController.class]];
         thirdPageViewController.view.frame = CGRectMake(0, 0,thirdPageViewController.view.frame.size.width , thirdPageViewController.view.frame.size.height);
         contantView  = thirdPageViewController.view;
         

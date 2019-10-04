@@ -91,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(strong,nonatomic) NSMutableArray *circheckedcouponseArry;
 
-
+@property (weak, nonatomic) IBOutlet UIButton *addbtn;
 
 @property (weak, nonatomic) IBOutlet UILabel *ActivateBtn;
 @property (weak, nonatomic) IBOutlet UIButton *activebtncolor;
@@ -111,7 +111,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *Activateview;
 
 @property (weak, nonatomic) IBOutlet UILabel *countproductlab;
-@property (weak, nonatomic) IBOutlet UIButton *addbtn;
+@property (weak, nonatomic) IBOutlet UIButton *addbtns;
 @property (weak, nonatomic) IBOutlet UIButton *subbtn;
 @property (weak, nonatomic) IBOutlet UILabel *addlab;
 @property (weak, nonatomic) IBOutlet UILabel *sublab;
