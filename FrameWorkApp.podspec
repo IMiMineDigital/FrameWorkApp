@@ -14,6 +14,7 @@ Pod::Spec.new do |spec|
   spec.public_header_files = "FrameWorkAp.framework/Headers/*.{h,m.Objective C}"
   spec.vendored_frameworks = "FrameWorkAp.framework"
   spec.exclude_files = "FrameWorkApp/Exclude"
+  spec.ios.deployment_target  = '9.0'
   spec.requires_arc = true
 
   
