@@ -140,7 +140,7 @@
     
     -(void)sortbyviewhide;
     -(void)sortbyviewshow;
-
+-(void)GetstoreUpdated;
 
 
 -(void)ClearAllDataShoppingToCircular;

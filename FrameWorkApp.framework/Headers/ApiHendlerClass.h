@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ApiHendlerClass : NSObject
 @property(strong,atomic)id<ApiHendlerClassDelegate>delegate;
 -(void)getAccessToken:(NSString*)baseurl;
--(void)getLoginData:(NSString*)name pass:(NSString*)pass;
+//-(void)getLoginData:(NSString*)name pass:(NSString*)pass;
+-(void)getLoginData:(NSString*)name pass:(NSString*)pass viewVC:(UIViewController*)viewVC;
 -(id)CircularPage;
 -(void) dissmisscontroller;
 -(void)logoutfunction;
