@@ -11,6 +11,9 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "9.0"
   spec.source       = { :git => "https://github.com/IMiMineDigital/FrameWorkApp.git", :tag => "1.0.2" }
   spec.source_files = "FrameWorkApp.framework/Headers/*.{h,m.Objective C}"
+  spec.public_header_files = "FrameWorkAp.framework/Headers/*.{h,m.Objective C}"
+  spec.vendored_frameworks = "FrameWorkAp.framework"
+
   spec.exclude_files = "FrameWorkApp/Exclude"
   spec.requires_arc = true
 
