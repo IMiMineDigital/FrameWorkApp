@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
   spec.author       = { "IMiMineDigital" => "48542324+IMiMineDigital@users.noreply.github.com" }
   spec.platform     = :ios, "9.0"
   spec.source       = { :git => "https://github.com/IMiMineDigital/FrameWorkApp.git", :tag => "1.0.2" }
-  spec.source_files = "FrameWorkApp.framework/Headers/*.h"
+  spec.source_files = "FrameWorkApp.framework/Headers/*.{h,m.Objective C}"
   spec.exclude_files = "FrameWorkApp/Exclude"
   spec.requires_arc = true
 
