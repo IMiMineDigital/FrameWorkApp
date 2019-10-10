@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "FrameWorkApp"
-  spec.version      = "1.0.4"
+  spec.version      = "1.0.5"
   spec.summary      = "FrameWorkApp is a framework."
   spec.description  = "FrameWorkApp is a swift framework which has a logger class and printHelloWorld func"
   spec.homepage     = "https://github.com/IMiMineDigital/FrameWorkApp"
