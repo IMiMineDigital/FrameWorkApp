@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
 
   spec.author       = { "IMiMineDigital" => "48542324+IMiMineDigital@users.noreply.github.com" }
   spec.platform     = :ios, "10.0"
-  spec.source       = { :git => "https://github.com/IMiMineDigital/FrameWorkApp.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/IMiMineDigital/FrameWorkApp.git", :tag => "1.0.5" }
   spec.source_files = "FrameWorkApp.framework/Headers/*.{h,m.Objective C}"
   spec.public_header_files = "FrameWorkApp.framework/Headers/*.{h,m.Objective C}"
 
