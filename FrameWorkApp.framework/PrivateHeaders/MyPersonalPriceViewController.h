@@ -26,6 +26,9 @@
 -(void)showtabbarview;
 -(UIView*)hideviewfilteroffers:(UIView*)view;
 @end
+
+
+
 @interface MyPersonalPriceViewController : UIViewController
 
 @property(strong,atomic)IBOutlet UICollectionView *collectionSingletable;
@@ -137,10 +140,11 @@
 -(void)filterclasscatviewhide;
 -(void)filterclasscatviewshow;
     
-    
-    -(void)sortbyviewhide;
-    -(void)sortbyviewshow;
+-(void)sortbyviewhide;
+-(void)sortbyviewshow;
 -(void)GetstoreUpdated;
+
+-(void)ClearAllFiltersForMain;
 
 
 -(void)ClearAllDataShoppingToCircular;
@@ -234,3 +238,5 @@
 //oGroupname = "";
 //rewardGroupname = "";
 //}
+
+

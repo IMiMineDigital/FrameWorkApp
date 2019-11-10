@@ -12,6 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @protocol HomeViewControllerDelegate <NSObject>
+
 - (void)customSetup;
 -(void)getdata:(NSMutableArray*)dict;
 -(void)GetCategoriesList:(NSMutableArray*)array;
@@ -34,18 +35,19 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)Filterviewclasshide;
 -(void)Filterviewclassshow;
 
-
 -(void)filterclasscatviewhide;
 -(void)filterclasscatviewshow;
 
+-(void)sortbyviewhide;
+-(void)sortbyviewshow;
 
-    -(void)sortbyviewhide;
-    -(void)sortbyviewshow;
-
+-(void)ClearAllFiltersForMain;
 
 -(void)ClearAllDataShoppingToCircular;
 @end
+
 @interface HomeViewController : UIViewController
+
 //@property (weak, nonatomic) IBOutlet UIButton *soppingbtn;
 @property (weak, nonatomic) IBOutlet UIButton *menubtn;
 @property (weak, nonatomic) NSMutableArray*receivefiltertypearray;
