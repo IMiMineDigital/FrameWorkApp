@@ -21,11 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong,atomic)id<ApiHendlerClassDelegate>delegate;
 -(void)getAccessToken:(NSString*)baseurl;
 //-(void)getLoginData:(NSString*)name pass:(NSString*)pass;
--(void)getLoginData:(NSString*)name pass:(NSString*)pass viewVC:(UIViewController*)viewVC;
+//-(void)getLoginData:(NSString*)name pass:(NSString*)pass viewVC:(UIViewController*)viewVC;
 -(id)CircularPage;
 -(void) dissmisscontroller;
 -(void)logoutfunction;
 +(NSMutableArray*)GetShoppinglistcount;
+-(void)getOnlyLoginDataStore:(NSString*)name pass:(NSString*)pass;
 -(id)getPurcheaseHistoryPage;
 -(void)GetshopperListIdApi;
 -(id)shoppingListPage;

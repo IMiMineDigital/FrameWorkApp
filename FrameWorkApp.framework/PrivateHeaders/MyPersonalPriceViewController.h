@@ -69,7 +69,7 @@
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 
 
-
+@property (weak, nonatomic) IBOutlet UIButton *singledoublebtn;
 
 
 
