@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "FrameWorkApp"
-  spec.version      = "1.0.8"
+  spec.version      = "1.0.9"
   spec.summary      = "FrameWorkApp is a framework."
   spec.description  = "FrameWorkApp is a swift framework which has a logger class and printHelloWorld func"
   spec.homepage     = "https://github.com/IMiMineDigital/FrameWorkApp"
@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
 
   spec.author       = { "IMiMineDigital" => "48542324+IMiMineDigital@users.noreply.github.com" }
   spec.platform     = :ios, "9.0"
-  spec.source       = { :git => "https://github.com/IMiMineDigital/FrameWorkApp.git", :tag => "1.0.8" }
+  spec.source       = { :git => "https://github.com/IMiMineDigital/FrameWorkApp.git", :tag => "1.0.9" }
   spec.source_files = "FrameWorkApp.framework/Headers/*.{h,m.Objective C}"
   spec.public_header_files = "FrameWorkApp.framework/Headers/*.{h,m.Objective C}"
 

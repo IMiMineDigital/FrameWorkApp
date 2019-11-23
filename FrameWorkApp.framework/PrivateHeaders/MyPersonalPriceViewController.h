@@ -98,7 +98,20 @@
 @property (weak, nonatomic) IBOutlet UIView *sortbyclassview;
     
     
-    
+ 
+
+
+@property (weak, nonatomic) IBOutlet UILabel *PersonalAddTitlelab;
+@property (weak, nonatomic) IBOutlet UILabel *StoreNameAddlab;
+@property (strong, nonatomic) IBOutlet UIView *PersonalAddViews;
+@property (strong, nonatomic) IBOutlet UIView *ChangeStoreViews;
+
+
+
+
+
+
+
     
 @property(strong,nonatomic)id<MyPersonalPriceViewControllerDelegate>delegate;
 @property(strong,atomic)NSString*comefrom;
@@ -151,6 +164,8 @@
 
 
 -(void)shoppingToCircularIndexdataClear:(NSMutableDictionary*)backdata;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightForConstraintPersonalAds;
+
 @end
 
 //BOOL animationsEnabled = [UIView areAnimationsEnabled];
