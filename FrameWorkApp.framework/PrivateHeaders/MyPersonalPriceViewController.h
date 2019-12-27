@@ -43,7 +43,9 @@
 @property (strong, atomic) NSMutableArray*permanentsaaray;
 @property (strong, atomic) NSMutableArray*Globalarraycircularwithadd;
 
-
+@property (weak, nonatomic) IBOutlet UIView *SearchingHeaderView;
+@property (weak, nonatomic) IBOutlet UILabel *SeachingTitlelab;
+@property (weak, nonatomic) IBOutlet UILabel *SeachingTitleCountlab;
 
 
 @property(strong,atomic) NSMutableDictionary *FilterByOffersdict;
@@ -186,8 +188,10 @@
 @property (strong, nonatomic) IBOutlet UIView *viewForMainCategorysOffersFilter;
 @property (strong, nonatomic) IBOutlet UIView *viewForMainSavingFilter;
 
+@property (strong, nonatomic) IBOutlet UIView *sepeterViesChange;
 
 
+@property (nonatomic) CGFloat lastContentOffset;
 
 @property (strong, nonatomic) IBOutlet UIView *viewForCategorysFilterAb;
 @property (strong, nonatomic) IBOutlet UIView *viewForOffersFilterAb;
@@ -206,6 +210,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblForCategorysFilterAb;
 @property (strong, nonatomic) IBOutlet UILabel *lblForOffersFilterAb;
 @property (strong, nonatomic) IBOutlet UILabel *lblForSavingFilterAb;
+
 
 
 
