@@ -150,34 +150,44 @@
 -(void)apple1:(NSInteger)index;
 -(void)apple2:(NSInteger)index;
 -(void)shoppinglisttocircularQuantityUpdate:(NSMutableDictionary*)dict;
-
 -(void)AddRelatedCountToatalQty:(NSMutableDictionary*)ReData;
 -(void)SubRelatedCountToatalQty:(NSMutableDictionary*)ReData;
-
 -(void)shoppingToCircularSubRelatedCountToatalQty:(NSMutableDictionary*)ReData;
 -(void)ShoppingListToCircularAddRelatedCountToatalQty:(NSMutableDictionary*)ReData;
 -(void)getshopinglistcount;
-
 -(void)Filterviewclasshide;
 -(void)Filterviewclassshow;
-
-
-
 -(void)filterclasscatviewhide;
 -(void)filterclasscatviewshow;
-    
 -(void)sortbyviewhide;
 -(void)sortbyviewshow;
 -(void)GetstoreUpdated;
-
 -(void)ClearAllFiltersForMain;
-
-
 -(void)ClearAllDataShoppingToCircular;
-
-
 -(void)shoppingToCircularIndexdataClear:(NSMutableDictionary*)backdata;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightForConstraintPersonalAds;
+<<<<<<< HEAD
+@property (weak, nonatomic) IBOutlet UIButton *btnChangeStorePropertry;
+@property (strong, nonatomic) IBOutlet UIView *viewForMainHeaderPersonalADDS;
+@property (strong, nonatomic) IBOutlet UIView *viewForMainHeaderCategorysOffersSavingFilter;
+@property (strong, nonatomic) IBOutlet UIView *viewForMainCategorysOffersFilter;
+@property (strong, nonatomic) IBOutlet UIView *viewForMainSavingFilter;
+@property (strong, nonatomic) IBOutlet UIView *sepeterViesChange;
+@property (nonatomic) CGFloat lastContentOffset;
+@property (strong, nonatomic) IBOutlet UIView *viewForCategorysFilterAb;
+@property (strong, nonatomic) IBOutlet UIView *viewForOffersFilterAb;
+@property (strong, nonatomic) IBOutlet UIView *viewForSavingFilterAb;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightForSavingConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heightForCategoryOffersConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *WeightForSavingConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *WeightForCategoryConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *WeightForOffersConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *btnFullStoreAddressPropertry;
+@property (strong, nonatomic) IBOutlet UILabel *lblForCategorysFilterAb;
+@property (strong, nonatomic) IBOutlet UILabel *lblForOffersFilterAb;
+@property (strong, nonatomic) IBOutlet UILabel *lblForSavingFilterAb;
+
+=======
 
 @property (weak, nonatomic) IBOutlet UIButton *btnChangeStorePropertry;
 
@@ -214,6 +224,7 @@
 
 
 
+>>>>>>> e65c2c6016fa1a9ebead2860fc09357dc59f66ca
 @end
  
 
