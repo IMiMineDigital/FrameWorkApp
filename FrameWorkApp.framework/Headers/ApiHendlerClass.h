@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(id)getPurcheaseHistoryPage;
 -(void)GetshopperListIdApi;
 -(id)shoppingListPage;
-
+-(id)StoreUpdate;
 @end
 
 NS_ASSUME_NONNULL_END
