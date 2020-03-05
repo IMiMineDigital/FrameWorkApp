@@ -5,23 +5,30 @@
 //  Created by kamlesh prajapati on 11/01/19.
 //  Copyright © 2019 kamlesh prajapati. All rights reserved.
 //
-
+#import "ApiHendlerClass.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 
 NS_ASSUME_NONNULL_BEGIN
+@class ApiHendlerClass;
 @protocol ApiHendlerClassDelegate <NSObject>
-
-
+@required
+- (void)userDidUpdateStore:(ApiHendlerClass*)handler with:(NSString *)storeId;
 
 @end
 
-@interface ApiHendlerClass : NSObject
-@property(strong,atomic)id<ApiHendlerClassDelegate>delegate;
+
+
+
+
+@interface ApiHendlerClass : NSObject 
+
+@property (nonatomic, weak) id <ApiHendlerClassDelegate> Delegate;
+
+
+
 -(void)getAccessToken:(NSString*)baseurl;
-//-(void)getLoginData:(NSString*)name pass:(NSString*)pass;
-//-(void)getLoginData:(NSString*)name pass:(NSString*)pass viewVC:(UIViewController*)viewVC;
 -(id)CircularPage;
 -(void) dissmisscontroller;
 -(void)logoutfunction;
@@ -30,7 +37,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(id)getPurcheaseHistoryPage;
 -(void)GetshopperListIdApi;
 -(id)shoppingListPage;
--(id)StoreUpdate;
+
++ (ApiHendlerClass *)sharedSingleton;
+-(void)setStore:(NSString *)storeId;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

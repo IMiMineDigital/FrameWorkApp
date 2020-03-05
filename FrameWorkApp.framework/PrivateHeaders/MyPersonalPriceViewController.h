@@ -15,7 +15,7 @@
 - (void)customSetup;
 -(id)function:(NSMutableArray*)dict;
 -(void)backShoppinglistDeleted:(NSMutableDictionary*)dict;
-
+-(void)setStore:(NSString *)storeId;
 -(void)hidentabbar;
 
 -(void)showbolerview;
@@ -186,6 +186,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblForOffersFilterAb;
 @property (strong, nonatomic) IBOutlet UILabel *lblForSavingFilterAb;
 
+
+
+@property (strong, nonatomic) IBOutlet UIView *logoaccountview;
+@property (strong, nonatomic) IBOutlet UIButton *btnbackhome;
 @end
  
 
