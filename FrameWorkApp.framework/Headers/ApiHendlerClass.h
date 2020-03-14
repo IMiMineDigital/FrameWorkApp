@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (ApiHendlerClass *)sharedSingleton;
 -(void)setStore:(NSString *)storeId;
-
+-(void)GetErrorLog:(NSString*)FunctionName ErrorDetail:(NSString*)ErrorDetail;
 
 @end
 
