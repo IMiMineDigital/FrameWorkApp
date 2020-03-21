@@ -188,6 +188,8 @@
 
 
 
+
+
 @property (strong, nonatomic) IBOutlet UIView *logoaccountview;
 @property (strong, nonatomic) IBOutlet UIButton *btnbackhome;
 @end
