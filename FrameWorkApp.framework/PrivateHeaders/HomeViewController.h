@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <WebKit/WebKit.h>
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong,atomic)NSString* filtertype;
 @property(strong,nonatomic)id<HomeViewControllerDelegate> delegate;
 
-
+@property(strong,nonatomic)IBOutlet WKWebView *webView;
 @property (weak, nonatomic) IBOutlet UIButton *MoreBtn;
 @property(strong,atomic)IBOutlet UIView*btnView;
 -(void) hideBottomBar;
